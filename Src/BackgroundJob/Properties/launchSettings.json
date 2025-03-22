@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BackgroundJob": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

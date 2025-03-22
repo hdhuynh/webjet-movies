@@ -28,6 +28,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.IntegrationT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Tests\Common\Common.csproj", "{F3090AD7-04E5-4C90-8A5C-871EDF5D9E4C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\PI.Caching.dll = Libs\PI.Caching.dll
+		Libs\PI.Common.dll = Libs\PI.Common.dll
+		Libs\PI.Common.Web.dll = Libs\PI.Common.Web.dll
+		Libs\PI.CQRS.Azure.dll = Libs\PI.CQRS.Azure.dll
+		Libs\PI.CQRS.Contracts.dll = Libs\PI.CQRS.Contracts.dll
+		Libs\PI.CQRS.dll = Libs\PI.CQRS.dll
+		Libs\PI.Logging.AppInsights.dll = Libs\PI.Logging.AppInsights.dll
+		Libs\PI.Validation.dll = Libs\PI.Validation.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundJob", "Src\BackgroundJob\BackgroundJob.csproj", "{4A469DC9-8F58-6F57-C081-2B152E9D8AF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +84,10 @@ Global
 		{F3090AD7-04E5-4C90-8A5C-871EDF5D9E4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3090AD7-04E5-4C90-8A5C-871EDF5D9E4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3090AD7-04E5-4C90-8A5C-871EDF5D9E4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A469DC9-8F58-6F57-C081-2B152E9D8AF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A469DC9-8F58-6F57-C081-2B152E9D8AF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A469DC9-8F58-6F57-C081-2B152E9D8AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A469DC9-8F58-6F57-C081-2B152E9D8AF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +102,7 @@ Global
 		{22B85BF9-27F9-4C0C-AB6D-C05014C022E5} = {9FEDAEFB-297C-4201-8FAA-F502F94CAFED}
 		{60B9545F-AECC-4B6A-B56A-71BD9E8F20BF} = {9FEDAEFB-297C-4201-8FAA-F502F94CAFED}
 		{F3090AD7-04E5-4C90-8A5C-871EDF5D9E4C} = {9FEDAEFB-297C-4201-8FAA-F502F94CAFED}
+		{4A469DC9-8F58-6F57-C081-2B152E9D8AF0} = {4B785E7E-2F35-4198-BD73-D2B861E5518A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D5D0CA3-C6B8-436C-82B0-39820C8A13FA}
