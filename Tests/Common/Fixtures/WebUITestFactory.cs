@@ -45,7 +45,7 @@ public class WebUiTestFactory : WebApplicationFactory<IWebUiMarker>
 
     public async Task<HttpClient> GetAuthenticatedClientAsync()
     {
-        return await GetAuthenticatedClientAsync("daniel@Webjet.com", "Northwind1!");
+        return await GetAuthenticatedClientAsync("daniel@webjet.com", "Northwind1!");
     }
 
     private async Task<HttpClient> GetAuthenticatedClientAsync(string userName, string password)

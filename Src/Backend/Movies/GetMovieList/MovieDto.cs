@@ -2,7 +2,7 @@
 
 public class MovieDto
 {
-    public required string MovieId { get; init; }
+    public required string Id { get; init; }
 
     public required string Title { get; init; }
 

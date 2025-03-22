@@ -1419,7 +1419,7 @@ export interface MoviesListVm {
 }
 
 export interface MovieDto {
-    movieId?: string;
+    id?: string;
     title?: string;
     poster?: string;
 }

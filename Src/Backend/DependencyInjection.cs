@@ -3,6 +3,8 @@ using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Webjet.Backend.Common.Behaviours;
+using Webjet.Backend.Common.Interfaces;
+using Webjet.Backend.Services;
 
 namespace Webjet.Backend;
 
@@ -21,7 +23,7 @@ public static class DependencyInjection
         });
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-
+        services.AddScoped<IExternalApiService, ExternalApiService>();
         return services;
     }
 }

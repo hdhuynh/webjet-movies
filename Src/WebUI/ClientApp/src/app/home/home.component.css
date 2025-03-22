@@ -14,7 +14,7 @@
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
-  gap: 15px;
+  gap: 30px;
   padding-bottom: 10px;
   scrollbar-width: none;
 }
@@ -50,7 +50,7 @@
   color: white;
   text-align: center;
   padding: 10px;
-  opacity: 0;
+  opacity: 0.5;
   transition: opacity 0.3s;
 }
 
@@ -76,4 +76,25 @@
 
 .scroll-right {
   right: 0;
+}
+
+img.error {
+  display: inherit;
+  /* transform: scale(1); */
+  content: ' ';
+  color: transparent;
+  width: 200px; /* image width */
+  height:260px;
+  position: relative;
+}
+
+img.error::before {
+  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQwWRek7L3RCJ0yCsrCx44ajb-eiLCB6flIGabD_ZEsMh3T_n0h5D9Qzo_aCC3iX03Las&usqp=CAU) no-repeat center;
+  content: ' ';
+  position: inherit;
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  left: 0;
+  top: 0;
 }

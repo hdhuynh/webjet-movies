@@ -1168,7 +1168,7 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "movieId": {
+          "id": {
             "type": "string"
           },
           "title": {
