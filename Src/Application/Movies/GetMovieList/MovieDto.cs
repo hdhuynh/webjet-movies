@@ -1,27 +1,12 @@
-﻿using AutoMapper;
-using Webjet.Application.Common.Mappings;
-using Webjet.Application.Products.Queries.GetProductsList;
-using Webjet.Domain.Products;
+﻿namespace Webjet.Application.Movies.GetMovieList;
 
-namespace Webjet.Application.Movies.GetMovieList;
-
-public class MovieDto //: IMapFrom<Product>
+public class MovieDto
 {
-    public int ProductId { get; init; }
+    public required string MovieId { get; init; }
 
-    public required string ProductName { get; init; }
+    public required string Title { get; init; }
 
-    public decimal? UnitPrice { get; init; }
-
-    public int? SupplierId { get; init; }
-
-    public required string SupplierCompanyName { get; init; }
-
-    public int? CategoryId { get; init; }
-
-    public required string CategoryName { get; init; }
-
-    public bool Discontinued { get; init; }
+    public required string Poster { get; init; }
 
     // public void Mapping(Profile profile)
     // {

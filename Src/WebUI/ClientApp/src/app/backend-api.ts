@@ -1419,14 +1419,9 @@ export interface MoviesListVm {
 }
 
 export interface MovieDto {
-    productId?: number;
-    productName?: string;
-    unitPrice?: number | undefined;
-    supplierId?: number | undefined;
-    supplierCompanyName?: string;
-    categoryId?: number | undefined;
-    categoryName?: string;
-    discontinued?: boolean;
+    movieId?: string;
+    title?: string;
+    poster?: string;
 }
 
 export interface CategoryLookupDto {

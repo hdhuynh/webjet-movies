@@ -1168,36 +1168,14 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "productId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "productName": {
+          "movieId": {
             "type": "string"
           },
-          "unitPrice": {
-            "type": "number",
-            "format": "decimal",
-            "nullable": true
-          },
-          "supplierId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "supplierCompanyName": {
+          "title": {
             "type": "string"
           },
-          "categoryId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "categoryName": {
+          "poster": {
             "type": "string"
-          },
-          "discontinued": {
-            "type": "boolean"
           }
         }
       },
