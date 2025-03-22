@@ -1,7 +1,11 @@
 ﻿using BackgroundJob.Jobs;
 using Microsoft.Extensions.DependencyInjection;
+using Polly;
+using Polly.Extensions.Http;
 using Serilog;
+using System.Net.Http;
 using Webjet.Backend.Common.Configuration;
+using Webjet.Backend.Services;
 
 namespace BackgroundJob;
 
@@ -18,7 +22,12 @@ public class Program
 			.ConfigureServices(services =>
 			{
 				services.AddScoped<SyncTimerJob>();
-			})
+
+                //set up HttpClient with retry policy
+                services.AddHttpClient<IExternalApiService, ExternalApiService>()
+                    .SetHandlerLifetime(TimeSpan.FromMinutes(5))  //Set lifetime to five minutes
+                    .AddPolicyHandler(GetRetryPolicy());
+            })
 			.ConfigureWebJobs((context, config) =>
 			{
 				WebJobBootstrapper.InitializeConfiguration(context.HostingEnvironment, context.Configuration);
@@ -41,4 +50,17 @@ public class Program
 			await host.RunAsync();
 		}
 	}
+
+    /// <summary>
+    /// Retry policy for HttpClient. Ref: https://learn.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly
+    /// </summary>
+    /// <returns></returns>
+    private static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
+    {
+        return HttpPolicyExtensions
+            .HandleTransientHttpError()
+            .OrResult(msg => !msg.IsSuccessStatusCode)
+            .WaitAndRetryAsync(6, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2,
+                retryAttempt)));
+    }
 }

@@ -5,10 +5,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Webjet.Backend.Common.Exceptions;
 using Webjet.Backend.Common.Interfaces;
-
-using System.Threading;
-using System.Threading.Tasks;
-
 using Webjet.Domain.Products;
 
 namespace Webjet.Backend.Products.Queries.GetProductDetail;
