@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Bogus" Version="34.0.2" />
+      <PackageReference Include="Meziantou.Extensions.Logging.Xunit" Version="1.0.7" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.0" />
+      <PackageReference Include="Respawn" Version="6.1.0" />
+      <PackageReference Include="Testcontainers.SqlEdge" Version="3.6.0" />
+      <PackageReference Include="xunit.extensibility.core" Version="2.6.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Src\Domain\Domain.csproj" />
+      <ProjectReference Include="..\..\Src\WebUI\WebUI.csproj" />
+    </ItemGroup>
+
+</Project>
