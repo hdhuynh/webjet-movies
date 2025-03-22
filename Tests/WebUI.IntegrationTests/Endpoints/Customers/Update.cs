@@ -1,7 +1,7 @@
 ﻿using Common.Factories;
 using Common.Fixtures;
 using FluentAssertions;
-using Webjet.Application.Customers.Commands.UpdateCustomer;
+using Webjet.Backend.Customers.Commands.UpdateCustomer;
 using System.Net;
 using Xunit;
 using Xunit.Abstractions;

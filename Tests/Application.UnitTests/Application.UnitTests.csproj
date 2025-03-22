@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <RootNamespace>Webjet.Application.UnitTests</RootNamespace>
-        <AssemblyName>Webjet.Application.UnitTests</AssemblyName>
+        <RootNamespace>Webjet.Backend.UnitTests</RootNamespace>
+        <AssemblyName>Webjet.Backend.UnitTests</AssemblyName>
         <IsPackable>false</IsPackable>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -24,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Src\Application\Application.csproj" />
+        <ProjectReference Include="..\..\Src\Backend\Backend.csproj" />
         <ProjectReference Include="..\..\Src\Infrastructure\Infrastructure.csproj" />
         <ProjectReference Include="..\Common\Common.csproj" />
     </ItemGroup>

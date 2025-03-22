@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Webjet.Application.Categories.Queries.GetCategoriesList;
+using Webjet.Backend.Categories.Queries.GetCategoriesList;
 using Webjet.WebUI.Extensions;
 
 namespace Webjet.WebUI.Features;

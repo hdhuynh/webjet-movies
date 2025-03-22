@@ -1,7 +1,7 @@
 ﻿using Common.Fixtures;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using Webjet.Application.Products.Commands.CreateProduct;
+using Webjet.Backend.Products.Commands.CreateProduct;
 using Xunit;
 using Xunit.Abstractions;
 

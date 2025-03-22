@@ -1,7 +1,7 @@
 using Common.Factories;
 using Common.Fixtures;
 using FluentAssertions;
-using Webjet.Application.Customers.Queries.GetCustomersList;
+using Webjet.Backend.Customers.Queries.GetCustomersList;
 using Xunit;
 using Xunit.Abstractions;
 

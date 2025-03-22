@@ -1,10 +1,9 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Webjet.Application.Products.Commands.CreateProduct;
-using Webjet.Application.Products.Commands.DeleteProduct;
-using Webjet.Application.Products.Commands.UpdateProduct;
-using Webjet.Application.Products.Queries.GetProductDetail;
-using Webjet.Application.Products.Queries.GetProductsList;
+using Webjet.Backend.Products.Commands.CreateProduct;
+using Webjet.Backend.Products.Commands.DeleteProduct;
+using Webjet.Backend.Products.Commands.UpdateProduct;
+using Webjet.Backend.Products.Queries.GetProductDetail;
+using Webjet.Backend.Products.Queries.GetProductsList;
 using Webjet.WebUI.Extensions;
 
 namespace Webjet.WebUI.Features;

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Webjet.Application.Common.Interfaces;
+using Webjet.Backend.Common.Interfaces;
 using Webjet.Domain.Common.Interfaces;
 
 namespace Webjet.Infrastructure.Persistence.Interceptors;

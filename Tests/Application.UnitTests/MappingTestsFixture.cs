@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Webjet.Application.Common.Mappings;
+using Webjet.Backend.Common.Mappings;
 
-namespace Webjet.Application.UnitTests;
+namespace Webjet.Backend.UnitTests;
 
 public class MappingTestsFixture
 {

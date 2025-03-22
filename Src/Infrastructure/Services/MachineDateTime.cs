@@ -1,4 +1,4 @@
-﻿using Webjet.Application.Common.Interfaces;
+﻿using Webjet.Backend.Common.Interfaces;
 
 namespace Webjet.Infrastructure.Services;
 

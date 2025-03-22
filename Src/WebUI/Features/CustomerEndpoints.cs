@@ -1,10 +1,10 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Webjet.Application.Customers.Commands.CreateCustomer;
-using Webjet.Application.Customers.Commands.DeleteCustomer;
-using Webjet.Application.Customers.Commands.UpdateCustomer;
-using Webjet.Application.Customers.Queries.GetCustomerDetail;
-using Webjet.Application.Customers.Queries.GetCustomersList;
+using Webjet.Backend.Customers.Commands.CreateCustomer;
+using Webjet.Backend.Customers.Commands.DeleteCustomer;
+using Webjet.Backend.Customers.Commands.UpdateCustomer;
+using Webjet.Backend.Customers.Queries.GetCustomerDetail;
+using Webjet.Backend.Customers.Queries.GetCustomersList;
 using Webjet.WebUI.Extensions;
 
 namespace Webjet.WebUI.Features;

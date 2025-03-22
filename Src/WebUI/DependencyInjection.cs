@@ -1,6 +1,6 @@
 ﻿using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
-using Webjet.Application.Common.Interfaces;
+using Webjet.Backend.Common.Interfaces;
 using Webjet.Infrastructure.Persistence;
 using Webjet.WebUI.Services;
 

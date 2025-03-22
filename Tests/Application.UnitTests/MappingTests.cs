@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using Common.Factories;
 using FluentAssertions;
-using Webjet.Application.Categories.Queries.GetCategoriesList;
-using Webjet.Application.Customers.Queries.GetCustomerDetail;
-using Webjet.Application.Customers.Queries.GetCustomersList;
-using Webjet.Application.Products.Queries.GetProductDetail;
-using Webjet.Application.Products.Queries.GetProductsList;
+using Webjet.Backend.Categories.Queries.GetCategoriesList;
+using Webjet.Backend.Customers.Queries.GetCustomerDetail;
+using Webjet.Backend.Customers.Queries.GetCustomersList;
+using Webjet.Backend.Products.Queries.GetProductDetail;
+using Webjet.Backend.Products.Queries.GetProductsList;
 using Webjet.Domain.Categories;
 using Xunit;
 
-namespace Webjet.Application.UnitTests;
+namespace Webjet.Backend.UnitTests;
 
 public class MappingTests(MappingTestsFixture fixture) : IClassFixture<MappingTestsFixture>
 {

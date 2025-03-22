@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Webjet.Application.Common.Interfaces;
+using Webjet.Backend.Common.Interfaces;
 using Webjet.Infrastructure.Identity;
 using Webjet.Infrastructure.Persistence;
 using Webjet.Infrastructure.Persistence.Interceptors;

@@ -1,5 +1,5 @@
 ﻿using Common.Fixtures;
-using Webjet.Application.Customers.Commands.CreateCustomer;
+using Webjet.Backend.Customers.Commands.CreateCustomer;
 using Xunit;
 using Xunit.Abstractions;
 

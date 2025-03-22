@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Webjet.Application.Movies.GetMovieList;
+using Webjet.Backend.Movies.GetMovieList;
 using Webjet.WebUI.Extensions;
 
 namespace Webjet.WebUI.Features;

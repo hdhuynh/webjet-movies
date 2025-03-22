@@ -1,5 +1,5 @@
-﻿using Webjet.Application.Common.Interfaces;
-using Webjet.Application.Customers.EventHandlers;
+﻿using Webjet.Backend.Common.Interfaces;
+using Webjet.Backend.Customers.EventHandlers;
 
 namespace Webjet.Infrastructure.Services;
 

@@ -2,7 +2,7 @@
 using Humanizer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Webjet.Application.Common.Interfaces;
+using Webjet.Backend.Common.Interfaces;
 using Webjet.Domain.Categories;
 using Webjet.Domain.Common;
 using Webjet.Domain.Customers;

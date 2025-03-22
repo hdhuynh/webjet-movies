@@ -1,5 +1,5 @@
 using MediatR;
-using Webjet.Application.Customers.Queries.GetCustomersList;
+using Webjet.Backend.Customers.Queries.GetCustomersList;
 using Webjet.WebUI.Extensions;
 
 namespace Webjet.WebUI.Features;

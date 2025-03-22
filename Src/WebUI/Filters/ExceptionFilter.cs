@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
-using Webjet.Application.Common.Exceptions;
+using Webjet.Backend.Common.Exceptions;
 
 namespace Webjet.WebUI.Filters;
 

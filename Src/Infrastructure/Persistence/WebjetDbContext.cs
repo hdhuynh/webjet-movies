@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Webjet.Application.Common.Interfaces;
+using Webjet.Backend.Common.Interfaces;
 using Webjet.Domain.Categories;
 using Webjet.Domain.Common.Base;
 using Webjet.Domain.Customers;

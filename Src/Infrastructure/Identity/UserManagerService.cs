@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using Webjet.Application.Common.Interfaces;
+using Webjet.Backend.Common.Interfaces;
 
 namespace Webjet.Infrastructure.Identity;
 

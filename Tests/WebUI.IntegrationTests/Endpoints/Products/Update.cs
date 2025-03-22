@@ -2,7 +2,7 @@
 using Common.Fixtures;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using Webjet.Application.Products.Commands.UpdateProduct;
+using Webjet.Backend.Products.Commands.UpdateProduct;
 using System.Net;
 using Xunit;
 using Xunit.Abstractions;
