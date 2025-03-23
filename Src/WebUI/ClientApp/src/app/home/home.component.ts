@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import {Client, MoviesListVm, ProductsListVm} from "../backend-api";
+import {Client, MoviesListVm} from "../backend-api";
 import {BsModalService} from "ngx-bootstrap/modal";
 
 declare var bootstrap: any;
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit
         this.showLoggedOutToast();
       }
     });
-    
+
     this.client.getMoviesList().subscribe(result => {
       this.moviesListVm = result;
     });

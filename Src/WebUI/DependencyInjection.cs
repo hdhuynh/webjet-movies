@@ -1,6 +1,7 @@
 ﻿using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Webjet.Backend.Common.Interfaces;
+using Webjet.Backend.Models.Data;
 using Webjet.Infrastructure.Persistence;
 using Webjet.WebUI.Services;
 
@@ -14,7 +15,7 @@ public static class DependencyInjection
         services.AddScoped<ICurrentUserService, CurrentUserService>();
 
         services.AddHealthChecks()
-            .AddDbContextCheck<WebjetDbContext>();
+            .AddDbContextCheck<MyDBContext>();
 
         services.AddOpenApiDocument(configure => configure.Title = "Webjet Movie");
         services.AddEndpointsApiExplorer();
@@ -24,7 +25,7 @@ public static class DependencyInjection
         services
             .AddControllersWithViews()
             .AddNewtonsoftJson()
-            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IWebjetDbContext>());
+            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IMyDBContext>());
 #pragma warning restore CS0618 // Type or member is obsolete
 
         services.AddRazorPages();

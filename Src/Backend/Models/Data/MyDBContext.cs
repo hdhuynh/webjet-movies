@@ -40,10 +40,7 @@ namespace Webjet.Backend.Models.Data
         {
             if (!optionsBuilder.IsConfigured && _configuration != null)
             {
-                optionsBuilder.UseSqlServer(_configuration.GetConnectionString(@"DbConnectionString"), builder => { 
-                    builder.UseHierarchyId();
-                    builder.UseNetTopologySuite();
-                });
+                optionsBuilder.UseSqlServer(_configuration.GetConnectionString(@"DbConnectionString"));
             }
         }
 

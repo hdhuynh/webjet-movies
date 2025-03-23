@@ -30,28 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseRegisteredServicesPage(app.Services);
 
     using var scope = app.Services.CreateScope();
-
-    try
-    {
-        var identityInitializer = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitializer>();
-        if (await identityInitializer.CanConnect())
-        {
-            //await identityInitializer.EnsureDeleted();
-            await identityInitializer.InitializeAsync();
-        }
-
-        var initializer = scope.ServiceProvider.GetRequiredService<WebjetDbContextInitializer>();
-        if (await identityInitializer.CanConnect())
-        {
-            await initializer.InitializeAsync();
-            await initializer.SeedAsync();
-        }
-    }
-    catch (Exception ex)
-    {
-        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred while migrating or initializing the database");
-    }
+    
 }
 else
 {
@@ -78,9 +57,9 @@ app.UseAuthorization();
 //app.MapRazorPages();
 
 app.MapMovieEndpoints();
-app.MapCategoryEndpoints();
-app.MapCustomerEndpoints();
-app.MapProductEndpoints();
+// app.MapCategoryEndpoints();
+// app.MapCustomerEndpoints();
+// app.MapProductEndpoints();
 
 app.MapFallbackToFile("index.html");
 

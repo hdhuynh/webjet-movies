@@ -11,6 +11,9 @@
     <EmbeddedResource Remove="Models\Data\Data\**" />
     <None Remove="Models\Data\Data\**" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Common\Interfaces\IWebjetDbContext.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />

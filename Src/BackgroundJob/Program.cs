@@ -33,12 +33,12 @@ public class Program
             {
 				services.AddScoped<SyncTimerJob>();
                 
-                services.AddDbContext<WebjetDbContext>(options =>
-                 options.UseSqlServer(PIConfiguration.Current.GetConnectionString("MyDatabase")));
-                 services.AddScoped<IWebjetDbContext>(provider => provider.GetRequiredService<WebjetDbContext>());
-                 services.AddScoped<WebjetDbContextInitializer>();
-                 services.AddScoped<EntitySaveChangesInterceptor>();
-                 services.AddScoped<DispatchDomainEventsInterceptor>();
+                // services.AddDbContext<WebjetDbContext>(options =>
+                //  options.UseSqlServer(PIConfiguration.Current.GetConnectionString("MyDatabase")));
+                //  services.AddScoped<IWebjetDbContext>(provider => provider.GetRequiredService<WebjetDbContext>());
+                //  services.AddScoped<WebjetDbContextInitializer>();
+                //  services.AddScoped<EntitySaveChangesInterceptor>();
+                //  services.AddScoped<DispatchDomainEventsInterceptor>();
                  services.AddTransient<IDateTime, MachineDateTime>();
                 services.AddTransient<ICurrentUserService, BackgroundJobUser>();
 

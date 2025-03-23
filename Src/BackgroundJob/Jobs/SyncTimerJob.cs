@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Webjet.Backend.Common.Configuration;
+using Webjet.Backend.Models.Data;
 using Webjet.Backend.Services;
 using Webjet.Infrastructure.Persistence;
 
 namespace BackgroundJob.Jobs;
 
-public class SyncTimerJob(IMovieProviderApiService movieProviderApiService, WebjetDbContext context)
+public class SyncTimerJob(IMovieProviderApiService movieProviderApiService)
 {
     private readonly ILogger _log = Log.ForContext<SyncTimerJob>();
 

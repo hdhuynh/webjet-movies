@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Webjet.Backend.Common.Interfaces;
+using Webjet.Backend.Models.Data;
 using Webjet.Infrastructure.Identity;
 using Webjet.Infrastructure.Persistence;
 using Webjet.Infrastructure.Persistence.Interceptors;
@@ -23,20 +24,19 @@ public static class DependencyInjection
 
     private static void AddServices(IServiceCollection services)
     {
-        services.AddTransient<INotificationService, NotificationService>();
+       // services.AddTransient<INotificationService, NotificationService>();
         services.AddTransient<IDateTime, MachineDateTime>();
     }
 
     private static void AddPersistence(IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<WebjetDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("MyDatabase")));
+        // services.AddDbContext<MyDBContext>(options =>
+        //     options.UseSqlServer(configuration.GetConnectionString("MyDatabase")));
 
-        services.AddScoped<IWebjetDbContext>(provider => provider.GetRequiredService<WebjetDbContext>());
-        services.AddScoped<WebjetDbContextInitializer>();
+        //services.AddScoped<IMyDBContext>(provider => provider.GetRequiredService<MyDBContext>());
 
-        services.AddScoped<EntitySaveChangesInterceptor>();
-        services.AddScoped<DispatchDomainEventsInterceptor>();
+        // services.AddScoped<EntitySaveChangesInterceptor>();
+        // services.AddScoped<DispatchDomainEventsInterceptor>();
     }
 
     private static void AddIdentity(IServiceCollection services, IConfiguration configuration)
