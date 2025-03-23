@@ -3,6 +3,7 @@ using PI.CQRS;
 using PI.CQRS.Azure;
 using PI.CQRS.Contracts;
 using Webjet.Backend;
+using Webjet.Backend.Services;
 using Module = Autofac.Module;
 
 namespace BackgroundJob.Code;
@@ -13,7 +14,12 @@ public class WebJobBusModule : Module
 
 	protected override void Load(ContainerBuilder builder)
 	{
-		var assembliesToScan = new[]
+        builder
+            .RegisterType<MovieProviderApiService>()
+            .As<IMovieProviderApiService>()
+            .InstancePerDependency()
+            .PropertiesAutowired();
+        var assembliesToScan = new[]
 		{
 			Assembly.GetAssembly(typeof(IAmBackendAssembly)),
 		};

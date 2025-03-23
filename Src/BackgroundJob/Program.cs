@@ -22,11 +22,11 @@ public class Program
 			.ConfigureServices(services =>
 			{
 				services.AddScoped<SyncTimerJob>();
-
+                services.AddHttpClient();
                 //set up HttpClient with retry policy
-                services.AddHttpClient<IMovieProviderApiService, MovieProviderApiService>()
-                    .SetHandlerLifetime(TimeSpan.FromMinutes(5))  //Set lifetime to five minutes
-                    .AddPolicyHandler(GetRetryPolicy());
+                // services.AddHttpClient<IMovieProviderApiService, MovieProviderApiService>()
+                //     .SetHandlerLifetime(TimeSpan.FromMinutes(5))  //Set lifetime to five minutes
+                //     .AddPolicyHandler(GetRetryPolicy());
             })
 			.ConfigureWebJobs((context, config) =>
 			{

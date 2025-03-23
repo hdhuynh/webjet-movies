@@ -1,24 +1,22 @@
 ﻿using Serilog;
+using Webjet.Backend.Common.Configuration;
+using Webjet.Backend.Services;
 
 namespace BackgroundJob.Jobs;
 
-public class SyncTimerJob
+public class SyncTimerJob(IMovieProviderApiService movieProviderApiService)
 {
-	private readonly ILogger _log = Log.ForContext<SyncTimerJob>();
+    private readonly ILogger _log = Log.ForContext<SyncTimerJob>();
 
-	public SyncTimerJob()
-	{
-	}
-
-	[FunctionName("SyncReminderJob")]
+    [FunctionName("SyncReminderJob")]
 	public async Task Run([TimerTrigger("%Jobs:SyncReminder:Trigger%")] TimerInfo timer)
 	{
 		_log.VerboseEvent("Sync", "Starting sync job");
 
 		try
-		{
-			
-		}
+        {
+            var movies = await movieProviderApiService.GetAllMovies(MovieProvider.CinemaWorld);
+        }
 		catch (Exception e)
 		{
 			_log.ErrorEvent("Sync", e, "Error processing sync reminder job");

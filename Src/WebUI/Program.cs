@@ -14,7 +14,7 @@ builder.Services.AddWebUI();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
-//Register IHttpClientFactory by calling AddHttpClient
+//Register IHttpClientFactory by calling AddHttpClient. TODO: remove as only background job uses it
 builder.Services.AddHttpClient();
 
 var app = builder.Build();
