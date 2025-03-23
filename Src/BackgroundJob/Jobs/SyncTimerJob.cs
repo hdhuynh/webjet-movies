@@ -1,10 +1,12 @@
-﻿using Serilog;
+﻿using Microsoft.EntityFrameworkCore;
+using Serilog;
 using Webjet.Backend.Common.Configuration;
 using Webjet.Backend.Services;
+using Webjet.Infrastructure.Persistence;
 
 namespace BackgroundJob.Jobs;
 
-public class SyncTimerJob(IMovieProviderApiService movieProviderApiService)
+public class SyncTimerJob(IMovieProviderApiService movieProviderApiService, WebjetDbContext context)
 {
     private readonly ILogger _log = Log.ForContext<SyncTimerJob>();
 
@@ -16,6 +18,11 @@ public class SyncTimerJob(IMovieProviderApiService movieProviderApiService)
 		try
         {
             var movies = await movieProviderApiService.GetAllMovies(MovieProvider.CinemaWorld);
+             var products = await context.Products
+                 // .ProjectTo<ProductDto>(mapper.ConfigurationProvider)
+                 // .OrderBy(p => p.ProductName)
+                 .ToListAsync();
+            //context.Movies.AddRange(movies);
         }
 		catch (Exception e)
 		{
