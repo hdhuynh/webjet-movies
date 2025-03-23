@@ -1,23 +1,18 @@
-﻿using AutoMapper;
-using MediatR;
-using Webjet.Backend.Common.Configuration;
-using Webjet.Backend.Common.Interfaces;
-using Webjet.Backend.Models.Data;
-using Webjet.Backend.Services;
+﻿using MediatR;
+using Webjet.Backend.Repositories.Read;
 
 namespace Webjet.Backend.Movies.GetMovieList;
 
 public record GetMoviesListQuery : IRequest<MoviesListVm>;
 
-public class GetMoviesListQueryHandler(IMovieProviderApiService movieProviderApiService) : IRequestHandler<GetMoviesListQuery, MoviesListVm>
+public class GetMoviesListQueryHandler(IMovieReadRepository readRepository) : IRequestHandler<GetMoviesListQuery, MoviesListVm>
 {
     public async Task<MoviesListVm> Handle(GetMoviesListQuery request, CancellationToken cancellationToken)
     {
-        var moviesListDto = await movieProviderApiService.GetAllMovies(MovieProvider.CinemaWorld);
+        var movieDtos = await readRepository.GetMovieSummaries();
         return new MoviesListVm
         {
-            Movies = moviesListDto.Movies
-
+            Movies = movieDtos.ToList()
         };
     }
 }

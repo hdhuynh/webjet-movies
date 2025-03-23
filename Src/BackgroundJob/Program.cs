@@ -12,6 +12,7 @@ using Webjet.Backend;
 using Webjet.Backend.Common.Behaviours;
 using Webjet.Backend.Common.Configuration;
 using Webjet.Backend.Common.Interfaces;
+using Webjet.Backend.Models.Data;
 using Webjet.Backend.Services;
 using Webjet.Infrastructure.Persistence;
 using Webjet.Infrastructure.Persistence.Interceptors;
@@ -32,10 +33,11 @@ public class Program
 			.ConfigureServices(services =>
             {
 				services.AddScoped<SyncTimerJob>();
-                
-                // services.AddDbContext<WebjetDbContext>(options =>
-                //  options.UseSqlServer(PIConfiguration.Current.GetConnectionString("MyDatabase")));
-                //  services.AddScoped<IWebjetDbContext>(provider => provider.GetRequiredService<WebjetDbContext>());
+
+
+                // var connectionString = PIConfiguration.Current.GetConnectionString("MyDatabase");
+                // services.AddDbContext<MyDBContext>(options => options.UseSqlServer(connectionString));
+                // services.AddScoped<IMyDBContext>(provider => provider.GetRequiredService<MyDBContext>());
                 //  services.AddScoped<WebjetDbContextInitializer>();
                 //  services.AddScoped<EntitySaveChangesInterceptor>();
                 //  services.AddScoped<DispatchDomainEventsInterceptor>();
@@ -63,7 +65,7 @@ public class Program
 
                 //set up HttpClient with retry policy
                 services.AddHttpClient<IMovieProviderApiService, MovieProviderApiService>()
-                    .SetHandlerLifetime(TimeSpan.FromMinutes(5))  //Set lifetime to five minutes
+                    .SetHandlerLifetime(TimeSpan.FromSeconds(1)) 
                     .AddPolicyHandler(GetRetryPolicy());
             })
 			.ConfigureWebJobs((context, config) =>

@@ -1,8 +1,6 @@
-using Microsoft.Win32;
 using Webjet.Backend;
 using Webjet.Infrastructure;
 using Webjet.Infrastructure.Identity;
-using Webjet.Infrastructure.Persistence;
 using Webjet.WebUI;
 using Webjet.WebUI.Extensions;
 using Webjet.WebUI.Features;
@@ -10,7 +8,7 @@ using Webjet.WebUI.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddWebUI();
+builder.Services.AddWebUI(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
@@ -53,13 +51,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-//app.MapRazorPages();
-
 app.MapMovieEndpoints();
-// app.MapCategoryEndpoints();
-// app.MapCustomerEndpoints();
-// app.MapProductEndpoints();
 
 app.MapFallbackToFile("index.html");
 

@@ -736,6 +736,7 @@ export interface MovieDto {
     id?: string;
     title?: string;
     poster?: string;
+    price?: string;
 }
 
 export class SwaggerException extends Error {

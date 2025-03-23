@@ -10,6 +10,7 @@ namespace Webjet.Backend.Services;
 public interface IMovieProviderApiService
 {
     Task<MoviesListDto> GetAllMovies(MovieProvider movieProvider);
+    Task<MovieDetailsDto> GetMovieDetails(MovieProvider movieProvider, string movieId);
 }
 public class MovieProviderApiService(IConfiguration config, ILogger<MovieProviderApiService> logger, IHttpClientFactory httpClientFactory) : IMovieProviderApiService
 {
@@ -24,24 +25,36 @@ public class MovieProviderApiService(IConfiguration config, ILogger<MovieProvide
         {
             var result = await apiResponse.Content.ReadAsStringAsync();
             var movies = JsonConvert.DeserializeObject<MoviesListDto>(result) ?? throw new InvalidDataException("Invalid data from External API");
-
-            //TODO: validate the data before returning
             return movies;
         }
         throw new HttpRequestException("Failed to get movies list");
     }
 
-    public async Task<HttpResponseMessage> GetAsync(MovieProviderApiConfig config, string apiRoute, string queryString = "")
+    public async Task<MovieDetailsDto> GetMovieDetails(MovieProvider movieProvider, string movieId)
+    {
+        var movieProviderApiConfig = GetConfig(movieProvider);
+        var apiResponse = await GetAsync(movieProviderApiConfig, movieProviderApiConfig.GetMovie,movieId);
+        if (apiResponse.IsSuccessStatusCode)
+        {
+            var result = await apiResponse.Content.ReadAsStringAsync();
+            var movieDetails = JsonConvert.DeserializeObject<MovieDetailsDto>(result) ?? throw new InvalidDataException("Invalid data from External API");
+            return movieDetails;
+        }
+        throw new HttpRequestException($"Failed to get movie details: {movieProvider}/{movieId}");
+    }
+
+    private async Task<HttpResponseMessage> GetAsync(MovieProviderApiConfig config, string apiRoute, string apiPath = "")
 	{
 		using var client = BuildHcpClient(config);
-		client.BaseAddress = new Uri($"{client.BaseAddress?.AbsoluteUri}/{apiRoute}");
+		client.BaseAddress = new Uri($"{client.BaseAddress?.AbsoluteUri}/{apiRoute}" + (apiPath==""?"":$"/{apiPath}"));
         logger.LogInformation("Sending GET request to external API endpoint");
-		return await client.GetAsync(queryString);
+		return await client.GetAsync("");
 	}
 
 	private HttpClient BuildHcpClient(MovieProviderApiConfig config)
     {
         var client = httpClientFactory.CreateClient();
+        client.Timeout = TimeSpan.FromSeconds(config.TimeoutSeconds);
         client.BaseAddress = new Uri(config.BaseUrl);
         client.DefaultRequestHeaders.Clear();
 		client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationJsonHeaderType));

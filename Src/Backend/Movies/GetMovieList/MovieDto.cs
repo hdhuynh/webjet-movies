@@ -2,19 +2,11 @@
 
 public class MovieDto
 {
-    public required string Id { get; init; }
+    public required string Id { get; set; }
 
     public required string Title { get; init; }
 
     public required string Poster { get; init; }
 
-    // public void Mapping(Profile profile)
-    // {
-    //     profile.CreateMap<Product, ProductDto>()
-    //         .ForMember(d => d.ProductId, opt => opt.MapFrom(s => s.Id.Value))
-    //         .ForMember(d => d.SupplierId, opt => opt.MapFrom(s => s.SupplierId.GetValueOrDefault().Value))
-    //         .ForMember(d => d.CategoryId, opt => opt.MapFrom(s => s.CategoryId.GetValueOrDefault().Value))
-    //         .ForMember(d => d.SupplierCompanyName, opt => opt.MapFrom(s => s.Supplier != null ? s.Supplier.CompanyName : string.Empty))
-    //         .ForMember(d => d.CategoryName, opt => opt.MapFrom(s => s.Category != null ? s.Category.CategoryName : string.Empty));
-    // }
+    public required string Price { get; set; }
 }

@@ -4,8 +4,10 @@ using Microsoft.Extensions.DependencyInjection;
 using PI.CQRS;
 using PI.CQRS.Azure;
 using PI.CQRS.Contracts;
+using System.Linq;
 using Webjet.Backend;
 using Webjet.Backend.Common.Interfaces;
+using Webjet.Backend.Models.Data;
 using Webjet.Backend.Services;
 using Webjet.Infrastructure.Persistence;
 using Webjet.Infrastructure.Persistence.Interceptors;
@@ -42,20 +44,30 @@ public class WebJobBusModule : Module
 
         //
         //
-        // var connectionString = PIConfiguration.Current.GetConnectionString("WebjetDbContext");
-        // //builder.Register(context => )
-        //
-        // builder.RegisterType<WebjetDbContext>()
-        //     .WithParameter("options", new DbContextOptionsBuilder<WebjetDbContext>().UseSqlServer(connectionString))
-        //     .As<IWebjetDbContext>()
-        //     .InstancePerDependency();
+        var connectionString = PIConfiguration.Current.GetConnectionString("MyDatabase");
+        builder.Register(context =>
+            {
+                var dbContextOptions = new DbContextOptionsBuilder<MyDBContext>()
+                    .UseSqlServer(connectionString);
+                return new MyDBContext(dbContextOptions.Options);
+            })
+            .As<MyDBContext>()
+            .InstancePerDependency();
 
         var assembliesToScan = new[]
 		{
 			Assembly.GetAssembly(typeof(IAmBackendAssembly)),
 		};
-		//Type[] filteredConsumers = assembliesToScan.GetFilteredConsumers<FireflyConsumerAttribute>();
-		var collection = new ServiceCollection();
+
+        builder.RegisterAssemblyTypes(assembliesToScan)
+            .Where(t => t.Name.EndsWith("Repository") && t.GetInterfaces().Any(i => i.Name.EndsWith("Repository")))
+            .As(type => type.GetInterfaces().Single(repoInterface => repoInterface.Name.EndsWith("Repository")))
+            .InstancePerDependency()
+            .PropertiesAutowired();
+
+
+        //Type[] filteredConsumers = assembliesToScan.GetFilteredConsumers<FireflyConsumerAttribute>();
+        var collection = new ServiceCollection();
 
 		IBusConfig busConfig;
 		var busType = PIConfiguration.Current.GetValue<string>("BusType");

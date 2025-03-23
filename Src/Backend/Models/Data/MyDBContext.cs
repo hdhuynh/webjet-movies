@@ -13,6 +13,7 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Webjet.Backend.Common.Interfaces;
 
 namespace Webjet.Backend.Models.Data
 {
@@ -29,7 +30,7 @@ namespace Webjet.Backend.Models.Data
         {
         }
 
-        public MyDBContext(IConfiguration configuration)
+        public MyDBContext(IConfiguration configuration, IDateTime dateTime)
         {
             _configuration = configuration;
         }

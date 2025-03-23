@@ -1,5 +1,6 @@
 ﻿using Common.Fixtures;
 using MediatR;
+using Webjet.Backend.Models.Data;
 using Webjet.Infrastructure.Persistence;
 using Xunit;
 using Xunit.Abstractions;
@@ -13,7 +14,7 @@ public abstract class IntegrationTestBase : IAsyncLifetime
 
     protected TestingDatabaseFixture Fixture { get; }
     protected IMediator Mediator { get; }
-    protected WebjetDbContext Context { get; }
+    protected MyDBContext Context { get; }
 
     public IntegrationTestBase(TestingDatabaseFixture fixture, ITestOutputHelper output)
     {
@@ -22,7 +23,7 @@ public abstract class IntegrationTestBase : IAsyncLifetime
 
         _scope = Fixture.ScopeFactory.CreateScope();
         Mediator = _scope.ServiceProvider.GetRequiredService<IMediator>();
-        Context = _scope.ServiceProvider.GetRequiredService<WebjetDbContext>();
+        Context = _scope.ServiceProvider.GetRequiredService<MyDBContext>();
     }
 
     public async Task InitializeAsync()

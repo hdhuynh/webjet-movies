@@ -32,8 +32,8 @@ public static class DependencyInjection
     {
         // services.AddDbContext<MyDBContext>(options =>
         //     options.UseSqlServer(configuration.GetConnectionString("MyDatabase")));
-
-        //services.AddScoped<IMyDBContext>(provider => provider.GetRequiredService<MyDBContext>());
+        //
+        // services.AddScoped<IMyDBContext>(provider => provider.GetRequiredService<MyDBContext>());
 
         // services.AddScoped<EntitySaveChangesInterceptor>();
         // services.AddScoped<DispatchDomainEventsInterceptor>();

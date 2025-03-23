@@ -1,7 +1,4 @@
 ﻿using Microsoft.Data.SqlClient;
-using PI.Common;
-using PI.Database.Environment;
-using PI.Database.Helpers;
 
 namespace Database.Code;
 
@@ -56,10 +53,10 @@ public class DbFactory : IDbFactory
 
 	public string[] CreateDropDBScripts()
 	{
-		return new[]
-		{
-			ZeroDb.Script
-		};
+		return
+        [
+            ZeroDb.Script
+        ];
 	}
 
 	public static string GetContextualConnectionString(MigrationsMode mode)

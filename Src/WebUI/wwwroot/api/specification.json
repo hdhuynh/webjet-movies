@@ -671,6 +671,9 @@
           },
           "poster": {
             "type": "string"
+          },
+          "price": {
+            "type": "string"
           }
         }
       }

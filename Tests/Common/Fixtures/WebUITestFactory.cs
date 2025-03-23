@@ -11,6 +11,7 @@ using Webjet.Infrastructure.Persistence;
 using Webjet.WebUI;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using Webjet.Backend.Models.Data;
 using Xunit.Abstractions;
 
 namespace Common.Fixtures;
@@ -40,7 +41,7 @@ public class WebUiTestFactory : WebApplicationFactory<IWebUiMarker>
 
         builder.ConfigureTestServices(services => services
             .ReplaceDbContext<ApplicationDbContext>(Database)
-            .ReplaceDbContext<WebjetDbContext>(Database));
+            .ReplaceDbContext<MyDBContext>(Database));
     }
 
     public async Task<HttpClient> GetAuthenticatedClientAsync()
