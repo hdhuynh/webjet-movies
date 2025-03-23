@@ -10,8 +10,6 @@ namespace Webjet.Backend.Services;
 public interface IMovieProviderApiService
 {
     Task<MoviesListDto> GetAllMovies(MovieProvider movieProvider);
-
-    //Task<HttpResponseMessage> GetAsync(MovieProviderApiConfig config, string apiRoute, string queryString = "");
 }
 public class MovieProviderApiService(IConfiguration config, ILogger<MovieProviderApiService> logger, IHttpClientFactory httpClientFactory) : IMovieProviderApiService
 {
@@ -44,10 +42,6 @@ public class MovieProviderApiService(IConfiguration config, ILogger<MovieProvide
 	private HttpClient BuildHcpClient(MovieProviderApiConfig config)
     {
         var client = httpClientFactory.CreateClient();
-        // var client = new HttpClient(new HttpClientHandler
-        // {
-        //     ServerCertificateCustomValidationCallback = (_, cert, _, _) => true
-        // });
         client.BaseAddress = new Uri(config.BaseUrl);
         client.DefaultRequestHeaders.Clear();
 		client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationJsonHeaderType));
