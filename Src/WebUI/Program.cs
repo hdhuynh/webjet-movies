@@ -1,3 +1,4 @@
+using Microsoft.Win32;
 using Webjet.Backend;
 using Webjet.Infrastructure;
 using Webjet.Infrastructure.Identity;
@@ -12,6 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddWebUI();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+//Register IHttpClientFactory by calling AddHttpClient
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

@@ -23,7 +23,7 @@ public static class DependencyInjection
         });
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-        services.AddScoped<IExternalApiService, ExternalApiService>();
+        services.AddScoped<IMovieProviderApiService, MovieProviderApiService>();
         return services;
     }
 }

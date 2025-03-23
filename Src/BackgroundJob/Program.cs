@@ -24,7 +24,7 @@ public class Program
 				services.AddScoped<SyncTimerJob>();
 
                 //set up HttpClient with retry policy
-                services.AddHttpClient<IExternalApiService, ExternalApiService>()
+                services.AddHttpClient<IMovieProviderApiService, MovieProviderApiService>()
                     .SetHandlerLifetime(TimeSpan.FromMinutes(5))  //Set lifetime to five minutes
                     .AddPolicyHandler(GetRetryPolicy());
             })
