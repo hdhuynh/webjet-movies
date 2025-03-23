@@ -1,6 +1,7 @@
 ﻿using Serilog;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using Webjet.Backend.Common.Configuration;
 using Webjet.Backend.Movies.GetMovieList;
 using Webjet.Backend.Repositories.Write;
@@ -34,18 +35,24 @@ public class SyncTimerJob(IMovieProviderApiService movieProviderApiService, IMov
     {
         //var moviesListDto = await movieProviderApiService.GetAllMovies(movieProvider);
         var movieDtoList = await MergeLatestMovieList();
+        // Parallel.ForEach(movieDtoList, async (movieDto) =>
+        // {
+        //     try
+        //     {
+        //         await AddOrUpdateSingleMovie(movieDto);
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         _log.With("Movie", movieDto)
+        //             .ErrorEvent("Sync", e, $"Error processing movie {movieDto}");
+        //     }
+        // });
 
         foreach (var movieDto in movieDtoList)
         {
             try
             {
-                movieDto.Price = null;
-                var movieDetails1 = await movieProviderApiService.GetMovieDetails(MovieProvider.CinemaWorld, ToFullMovieId(movieDto.Id, MovieProvider.CinemaWorld));
-                var movieDetails2 = await movieProviderApiService.GetMovieDetails(MovieProvider.FilmWorld, ToFullMovieId(movieDto.Id, MovieProvider.FilmWorld));
-                var price1 = Convert.ToDecimal(movieDetails1.Price);
-                var price2 = Convert.ToDecimal(movieDetails2.Price);
-                movieDto.Price = Math.Min(price1, price2).ToString(CultureInfo.InvariantCulture);
-                await repository.AddOrUpdateMovieSummary(movieDto);
+                await AddOrUpdateSingleMovie(movieDto);
             }
             catch (Exception e)
             {
@@ -53,6 +60,17 @@ public class SyncTimerJob(IMovieProviderApiService movieProviderApiService, IMov
                     .ErrorEvent("Sync", e, $"Error processing movie {movieDto}");
             }
         }
+    }
+
+    private async Task AddOrUpdateSingleMovie(MovieDto movieDto)
+    {
+        movieDto.Price = null;
+        var movieDetails1 = await movieProviderApiService.GetMovieDetails(MovieProvider.CinemaWorld, ToFullMovieId(movieDto.Id, MovieProvider.CinemaWorld));
+        var movieDetails2 = await movieProviderApiService.GetMovieDetails(MovieProvider.FilmWorld, ToFullMovieId(movieDto.Id, MovieProvider.FilmWorld));
+        var price1 = Convert.ToDecimal(movieDetails1.Price);
+        var price2 = Convert.ToDecimal(movieDetails2.Price);
+        movieDto.Price = Math.Min(price1, price2).ToString(CultureInfo.InvariantCulture);
+        await repository.AddOrUpdateMovieSummary(movieDto);
     }
 
     private async Task<List<MovieDto>> MergeLatestMovieList()

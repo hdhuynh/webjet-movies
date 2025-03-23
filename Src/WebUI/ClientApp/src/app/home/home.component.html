@@ -14,7 +14,12 @@
     <div class="movie-wrapper" id="movieScroll">
       <div class="movie-card" *ngFor="let movie of moviesListVm.movies">
         <img [src]="movie.poster" [alt]="movie.title" onerror="this.classList.add('error')" >
-        <div class="movie-overlay">{{movie.title}}</div>
+        <div class="movie-overlay">
+          <div>
+            {{movie.title}}
+          </div>
+          <div>{{movie.price | currency}}</div>
+        </div>
       </div>
     </div>
     <button class="scroll-button scroll-right" (click)="scrollRight()">&#10095;</button>
