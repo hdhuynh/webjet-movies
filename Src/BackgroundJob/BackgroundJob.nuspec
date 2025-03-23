@@ -3,7 +3,7 @@
 	<metadata>
 		<id>BackgroundJob</id>
 		<title>Background Job</title>
-		<description>Firefly Web Jobs for cloud backend</description>
+		<description>Background Job for cloud backend</description>
 		<version>1.0.0</version>
 		<authors>Planet Innovation</authors>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>

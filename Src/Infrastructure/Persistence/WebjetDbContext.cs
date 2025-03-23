@@ -4,6 +4,7 @@ using Webjet.Domain.Categories;
 using Webjet.Domain.Common.Base;
 using Webjet.Domain.Customers;
 using Webjet.Domain.Employees;
+using Webjet.Domain.Movies;
 using Webjet.Domain.Orders;
 using Webjet.Domain.Products;
 using Webjet.Domain.Shipping;
@@ -17,6 +18,8 @@ public class WebjetDbContext(DbContextOptions<WebjetDbContext> options,
         DispatchDomainEventsInterceptor dispatchDomainEventsInterceptor)
     : DbContext(options), IWebjetDbContext
 {
+    public DbSet<Movie> Movies => Set<Movie>();
+
     public DbSet<Category> Categories => Set<Category>();
 
     public DbSet<Customer> Customers => Set<Customer>();

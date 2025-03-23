@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Webjet.Domain.Categories;
 using Webjet.Domain.Customers;
 using Webjet.Domain.Employees;
+using Webjet.Domain.Movies;
 using Webjet.Domain.Orders;
 using Webjet.Domain.Products;
 using Webjet.Domain.Shipping;
@@ -15,6 +16,8 @@ namespace Webjet.Backend.Common.Interfaces;
 
 public interface IWebjetDbContext
 {
+    DbSet<Movie> Movies { get; }
+
     DbSet<Category> Categories { get; }
 
     DbSet<Customer> Customers { get; }

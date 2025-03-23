@@ -18,11 +18,11 @@ public class SyncTimerJob(IMovieProviderApiService movieProviderApiService, Webj
 		try
         {
             var movies = await movieProviderApiService.GetAllMovies(MovieProvider.CinemaWorld);
-             var products = await context.Products
-                 // .ProjectTo<ProductDto>(mapper.ConfigurationProvider)
-                 // .OrderBy(p => p.ProductName)
-                 .ToListAsync();
-            //context.Movies.AddRange(movies);
+            //  var products = await context.Products
+            //      // .ProjectTo<ProductDto>(mapper.ConfigurationProvider)
+            //      // .OrderBy(p => p.ProductName)
+            //      .ToListAsync();
+            // //context.Movies.AddRange(movies);
         }
 		catch (Exception e)
 		{
