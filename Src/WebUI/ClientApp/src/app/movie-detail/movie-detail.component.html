@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">{{ movie.title }}</h4>
+  <h5 class="modal-title">{{ movie.title }}</h5>
 
   <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
     <span aria-hidden="true">&times;</span>
@@ -8,8 +8,8 @@
 <div class="modal-body">
   <div class="container">
     <div class="row">
-      <div class="lead text-end text-danger">Best price: {{ movie.price | currency }}</div>
-      <p class="small text-end">At {{ movie.bestPriceProvider }}</p>
+      <h6 class="text-end text-danger">Best price: {{ movie.price | currency }}</h6>
+      <p class="small text-end">at {{ movie.bestPriceProvider }}</p>
     </div>
   </div>
   <div *ngIf="detailKeys">

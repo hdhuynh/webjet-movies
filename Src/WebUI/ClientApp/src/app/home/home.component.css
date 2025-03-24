@@ -16,6 +16,7 @@
   scroll-behavior: smooth;
   gap: 30px;
   padding-bottom: 10px;
+  margin: 43px;
   scrollbar-width: none;
 }
 
@@ -28,7 +29,7 @@
   overflow: hidden;
   transition: transform 0.3s;
   flex: 0 0 auto;
-  height: 350px;
+  height: 300px;
 }
 
 .movie-card img {
@@ -62,11 +63,12 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.9);
   color: white;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 10px;
   cursor: pointer;
+  width:40px;
   z-index: 10;
 }
 
@@ -89,7 +91,7 @@ img.error {
 }
 
 img.error::before {
-  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQwWRek7L3RCJ0yCsrCx44ajb-eiLCB6flIGabD_ZEsMh3T_n0h5D9Qzo_aCC3iX03Las&usqp=CAU) no-repeat center;
+  background: url(/assets/images/NoPoster.png) no-repeat center;
   content: ' ';
   position: inherit;
   display: inline-block;
@@ -98,3 +100,9 @@ img.error::before {
   left: 0;
   top: 0;
 }
+
+.jumbotron {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
