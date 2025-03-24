@@ -22,7 +22,6 @@
     <None Remove="appsettings.json" />
     <None Remove="pi.settings.json" />
     <None Remove="Scripts\001.Initial.sql" />
-    <None Remove="Scripts\002.SleepAlgorithm.sql" />
   </ItemGroup>
 
   <ItemGroup>

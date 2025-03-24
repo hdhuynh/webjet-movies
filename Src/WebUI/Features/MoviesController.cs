@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
 using Webjet.Backend.Movies.GetMovieDetail;
 using Webjet.Backend.Movies.GetMovieList;
 using Webjet.WebUI.Extensions;

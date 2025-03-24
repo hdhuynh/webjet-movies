@@ -14,14 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "Src\WebUI\WebUI.cs
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
-		Libs\PI.Caching.dll = Libs\PI.Caching.dll
 		Libs\PI.Common.dll = Libs\PI.Common.dll
-		Libs\PI.Common.Web.dll = Libs\PI.Common.Web.dll
-		Libs\PI.CQRS.Azure.dll = Libs\PI.CQRS.Azure.dll
-		Libs\PI.CQRS.Contracts.dll = Libs\PI.CQRS.Contracts.dll
-		Libs\PI.CQRS.dll = Libs\PI.CQRS.dll
-		Libs\PI.Logging.AppInsights.dll = Libs\PI.Logging.AppInsights.dll
-		Libs\PI.Validation.dll = Libs\PI.Validation.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundJob", "Src\BackgroundJob\BackgroundJob.csproj", "{4A469DC9-8F58-6F57-C081-2B152E9D8AF0}"

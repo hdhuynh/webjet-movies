@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PI.Common;
 using Webjet.Backend.Models.Data;
 
 namespace Webjet.Backend.Repositories.Write;
@@ -15,9 +14,7 @@ public abstract class BaseWriteRepository(Func<WebjetMoviesDbContext> context)
 	{
 		try
 		{
-			using var txn = TransactionScopeHelper.Transaction();
 			await callback();
-			txn.Complete();
 		}
 		catch (DbUpdateException e)
 		{
@@ -26,22 +23,6 @@ public abstract class BaseWriteRepository(Func<WebjetMoviesDbContext> context)
 			throw;
 		}
 	}
-
-	protected void Transact(Action callback)
-	{
-		try
-		{
-			using var txn = TransactionScopeHelper.Transaction();
-			callback();
-			txn.Complete();
-		}
-		catch (DbUpdateException e)
-		{
-			ThrowIfUniquenessError(e);
-			throw;
-		}
-	}
-
 	private void ThrowIfUniquenessError(Exception e)
 	{
 		if (e.InnerException?.InnerException == null) return;

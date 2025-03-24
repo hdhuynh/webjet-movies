@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
-		<id>Firefly.Database</id>
+		<id>Database</id>
 		<version>$version$</version>
-		<description>Firefly Database Utility</description>
+		<description>Database Utility</description>
 		<authors>Planet Innovation</authors>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	</metadata>
