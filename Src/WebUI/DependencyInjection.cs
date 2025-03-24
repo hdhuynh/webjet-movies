@@ -27,7 +27,7 @@ public static class DependencyInjection
 
 
         services.AddHealthChecks()
-            .AddDbContextCheck<MyDBContext>();
+            .AddDbContextCheck<WebjetMoviesDbContext>();
 
         services.AddOpenApiDocument(configure => configure.Title = "Webjet Movie");
         services.AddEndpointsApiExplorer();
@@ -37,7 +37,7 @@ public static class DependencyInjection
         services
             .AddControllersWithViews()
             .AddNewtonsoftJson()
-            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IMyDBContext>());
+            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IWebjetMoviesDbContext>());
 #pragma warning restore CS0618 // Type or member is obsolete
 
         services.AddRazorPages();

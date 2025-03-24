@@ -14,8 +14,9 @@ using System.Threading.Tasks;
 
 namespace Webjet.Backend.Models.Data
 {
-    public interface IMyDBContext : IDisposable
+    public interface IWebjetMoviesDbContext : IDisposable
     {
+        DbSet<MovieDetail> MovieDetails { get; set; } // MovieDetails
         DbSet<MovieSummary> MovieSummaries { get; set; } // MovieSummaries
 
         int SaveChanges();

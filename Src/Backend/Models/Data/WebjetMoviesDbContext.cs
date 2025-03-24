@@ -13,28 +13,28 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Webjet.Backend.Common.Interfaces;
 
 namespace Webjet.Backend.Models.Data
 {
-    public class MyDBContext : DbContext, IMyDBContext
+    public class WebjetMoviesDbContext : DbContext, IWebjetMoviesDbContext
     {
         private readonly IConfiguration _configuration;
 
-        public MyDBContext()
+        public WebjetMoviesDbContext()
         {
         }
 
-        public MyDBContext(DbContextOptions<MyDBContext> options)
+        public WebjetMoviesDbContext(DbContextOptions<WebjetMoviesDbContext> options)
             : base(options)
         {
         }
 
-        public MyDBContext(IConfiguration configuration, IDateTime dateTime)
+        public WebjetMoviesDbContext(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
+        public DbSet<MovieDetail> MovieDetails { get; set; } // MovieDetails
         public DbSet<MovieSummary> MovieSummaries { get; set; } // MovieSummaries
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -58,6 +58,7 @@ namespace Webjet.Backend.Models.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.ApplyConfiguration(new MovieDetailConfiguration());
             modelBuilder.ApplyConfiguration(new MovieSummaryConfiguration());
         }
 

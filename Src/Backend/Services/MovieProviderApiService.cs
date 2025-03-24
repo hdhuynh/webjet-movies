@@ -12,7 +12,11 @@ public interface IMovieProviderApiService
     Task<MoviesListDto> GetAllMovies(MovieProvider movieProvider);
     Task<MovieDetailsDto> GetMovieDetails(MovieProvider movieProvider, string movieId);
 }
-public class MovieProviderApiService(IConfiguration config, ILogger<MovieProviderApiService> logger, IHttpClientFactory httpClientFactory) : IMovieProviderApiService
+
+public class MovieProviderApiService(
+    IConfiguration config,
+    ILogger<MovieProviderApiService> logger,
+    IHttpClientFactory httpClientFactory) : IMovieProviderApiService
 {
     private const string XAccessTokenHeader = "x-access-token";
     private const string ApplicationJsonHeaderType = "application/json";
@@ -24,45 +28,52 @@ public class MovieProviderApiService(IConfiguration config, ILogger<MovieProvide
         if (apiResponse.IsSuccessStatusCode)
         {
             var result = await apiResponse.Content.ReadAsStringAsync();
-            var movies = JsonConvert.DeserializeObject<MoviesListDto>(result) ?? throw new InvalidDataException("Invalid data from External API");
+            var movies = JsonConvert.DeserializeObject<MoviesListDto>(result) ??
+                         throw new InvalidDataException("Invalid data from External API");
             return movies;
         }
+
         throw new HttpRequestException("Failed to get movies list");
     }
 
     public async Task<MovieDetailsDto> GetMovieDetails(MovieProvider movieProvider, string movieId)
     {
         var movieProviderApiConfig = GetConfig(movieProvider);
-        var apiResponse = await GetAsync(movieProviderApiConfig, movieProviderApiConfig.GetMovie,movieId);
+        var apiResponse = await GetAsync(movieProviderApiConfig, movieProviderApiConfig.GetMovie, movieId);
         if (apiResponse.IsSuccessStatusCode)
         {
             var result = await apiResponse.Content.ReadAsStringAsync();
-            var movieDetails = JsonConvert.DeserializeObject<MovieDetailsDto>(result) ?? throw new InvalidDataException("Invalid data from External API");
+            var movieDetails = JsonConvert.DeserializeObject<MovieDetailsDto>(result) ??
+                               throw new InvalidDataException("Invalid data from External API");
             return movieDetails;
         }
+
         throw new HttpRequestException($"Failed to get movie details: {movieProvider}/{movieId}");
     }
 
-    private async Task<HttpResponseMessage> GetAsync(MovieProviderApiConfig config, string apiRoute, string apiPath = "")
-	{
-		using var client = BuildHcpClient(config);
-		client.BaseAddress = new Uri($"{client.BaseAddress?.AbsoluteUri}/{apiRoute}" + (apiPath==""?"":$"/{apiPath}"));
-        logger.LogInformation("Sending GET request to external API endpoint");
-		return await client.GetAsync("");
-	}
+    private async Task<HttpResponseMessage> GetAsync(MovieProviderApiConfig movieProviderApiConfig, string apiRoute,
+        string apiPath = "")
+    {
+        using var client = BuildHcpClient(movieProviderApiConfig);
+        var uriString = $"{client.BaseAddress?.AbsoluteUri}/{apiRoute}" +
+                        (string.IsNullOrEmpty(apiPath) ? string.Empty : $"/{apiPath}");
+        client.BaseAddress = new Uri(uriString);
+        logger.LogInformation($"Sending GET request to API endpoint: {uriString}");
+        return await client.GetAsync("");
+    }
 
-	private HttpClient BuildHcpClient(MovieProviderApiConfig config)
+    private HttpClient BuildHcpClient(MovieProviderApiConfig movieProviderApiConfig)
     {
         var client = httpClientFactory.CreateClient();
-        client.Timeout = TimeSpan.FromSeconds(config.TimeoutSeconds);
-        client.BaseAddress = new Uri(config.BaseUrl);
+        client.Timeout = TimeSpan.FromSeconds(movieProviderApiConfig.TimeoutSeconds);
+        client.BaseAddress = new Uri(movieProviderApiConfig.BaseUrl);
         client.DefaultRequestHeaders.Clear();
-		client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationJsonHeaderType));
-		client.DefaultRequestHeaders.Add(XAccessTokenHeader, config.AccessToken);
-		return client;
-	}
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationJsonHeaderType));
+        client.DefaultRequestHeaders.Add(XAccessTokenHeader, movieProviderApiConfig.AccessToken);
+        return client;
+    }
 
-    private MovieProviderApiConfig GetConfig(MovieProvider movieProvider)
+    private MovieProviderApiConfig? GetConfig(MovieProvider movieProvider)
     {
         try
         {

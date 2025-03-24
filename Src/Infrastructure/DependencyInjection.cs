@@ -30,10 +30,10 @@ public static class DependencyInjection
 
     private static void AddPersistence(IServiceCollection services, IConfiguration configuration)
     {
-        // services.AddDbContext<MyDBContext>(options =>
+        // services.AddDbContext<WebjetMoviesDbContext>(options =>
         //     options.UseSqlServer(configuration.GetConnectionString("MyDatabase")));
         //
-        // services.AddScoped<IMyDBContext>(provider => provider.GetRequiredService<MyDBContext>());
+        // services.AddScoped<IWebjetMoviesDbContext>(provider => provider.GetRequiredService<WebjetMoviesDbContext>());
 
         // services.AddScoped<EntitySaveChangesInterceptor>();
         // services.AddScoped<DispatchDomainEventsInterceptor>();

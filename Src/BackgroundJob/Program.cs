@@ -36,8 +36,8 @@ public class Program
 
 
                 // var connectionString = PIConfiguration.Current.GetConnectionString("MyDatabase");
-                // services.AddDbContext<MyDBContext>(options => options.UseSqlServer(connectionString));
-                // services.AddScoped<IMyDBContext>(provider => provider.GetRequiredService<MyDBContext>());
+                // services.AddDbContext<WebjetMoviesDbContext>(options => options.UseSqlServer(connectionString));
+                // services.AddScoped<IWebjetMoviesDbContext>(provider => provider.GetRequiredService<WebjetMoviesDbContext>());
                 //  services.AddScoped<WebjetDbContextInitializer>();
                 //  services.AddScoped<EntitySaveChangesInterceptor>();
                 //  services.AddScoped<DispatchDomainEventsInterceptor>();

@@ -44,6 +44,13 @@ namespace Webjet.Backend.Models.Data
         [Display(Name = "Updated at")]
         public DateTimeOffset UpdatedAt { get; set; } // UpdatedAt
 
+        // Reverse navigation
+
+        /// <summary>
+        /// Parent (One-to-One) MovieSummary pointed by [MovieDetails].[MovieId] (FK_MovieDetails_MovieSummaries)
+        /// </summary>
+        public MovieDetail MovieDetail { get; set; } // MovieDetails.FK_MovieDetails_MovieSummaries
+
         public MovieSummary()
         {
             InitializePartial();

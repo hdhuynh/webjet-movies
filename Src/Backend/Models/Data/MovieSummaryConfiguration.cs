@@ -14,7 +14,7 @@ namespace Webjet.Backend.Models.Data
         public void Configure(EntityTypeBuilder<MovieSummary> builder)
         {
             builder.ToTable("MovieSummaries", "dbo");
-            builder.HasKey(x => x.MovieId).HasName("PK_Movies").IsClustered();
+            builder.HasKey(x => x.MovieId).HasName("PK_MovieSummaries").IsClustered();
 
             builder.Property(x => x.MovieId).HasColumnName(@"MovieId").HasColumnType("nvarchar(20)").IsRequired().HasMaxLength(20).ValueGeneratedNever();
             builder.Property(x => x.Title).HasColumnName(@"Title").HasColumnType("nvarchar(256)").IsRequired().HasMaxLength(256);

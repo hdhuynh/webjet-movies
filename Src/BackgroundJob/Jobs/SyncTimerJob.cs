@@ -9,7 +9,7 @@ using Webjet.Backend.Services;
 
 namespace BackgroundJob.Jobs;
 
-public class SyncTimerJob(IMovieProviderApiService movieProviderApiService, IMovieWriteRepository repository) //, MyDBContext context)
+public class SyncTimerJob(IMovieProviderApiService movieProviderApiService, IMovieWriteRepository repository) //, WebjetMoviesDbContext context)
 {
     private readonly ILogger _log = Log.ForContext<SyncTimerJob>();
 

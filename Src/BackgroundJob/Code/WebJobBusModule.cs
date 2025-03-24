@@ -47,11 +47,11 @@ public class WebJobBusModule : Module
         var connectionString = PIConfiguration.Current.GetConnectionString("MyDatabase");
         builder.Register(context =>
             {
-                var dbContextOptions = new DbContextOptionsBuilder<MyDBContext>()
+                var dbContextOptions = new DbContextOptionsBuilder<WebjetMoviesDbContext>()
                     .UseSqlServer(connectionString);
-                return new MyDBContext(dbContextOptions.Options);
+                return new WebjetMoviesDbContext(dbContextOptions.Options);
             })
-            .As<MyDBContext>()
+            .As<WebjetMoviesDbContext>()
             .InstancePerDependency();
 
         var assembliesToScan = new[]

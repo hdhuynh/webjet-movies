@@ -4,7 +4,7 @@ using Webjet.Backend.Movies.GetMovieList;
 
 namespace Webjet.Backend.Repositories.Write
 {
-    public class MovieWriteRepository(Func<MyDBContext> context) : BaseWriteRepository(context), IMovieWriteRepository
+    public class MovieWriteRepository(Func<WebjetMoviesDbContext> context) : BaseWriteRepository(context), IMovieWriteRepository
     {
         public DbSet<MovieSummary> GetMovieSummaries()
         {

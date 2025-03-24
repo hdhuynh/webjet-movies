@@ -4,12 +4,12 @@ using Webjet.Backend.Models.Data;
 
 namespace Webjet.Backend.Repositories.Write;
 
-public abstract class BaseWriteRepository(Func<MyDBContext> context)
+public abstract class BaseWriteRepository(Func<WebjetMoviesDbContext> context)
 {
 	private const string DataUniquenessError = "The operation could not be completed due to a uniqueness issue in the recorded data";
 
-	private readonly Lazy<MyDBContext> _lazyDbContext = new(context);
-	protected MyDBContext DbContext => _lazyDbContext.Value;
+	private readonly Lazy<WebjetMoviesDbContext> _lazyDbContext = new(context);
+	protected WebjetMoviesDbContext DbContext => _lazyDbContext.Value;
 
     protected async Task Transact(Func<Task> callback)
 	{

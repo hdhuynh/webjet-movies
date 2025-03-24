@@ -8,11 +8,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Webjet.Backend.Models.Data
 {
-    public class MyDBContextFactory : IDesignTimeDbContextFactory<MyDBContext>
+    public class WebjetMoviesDbContextFactory : IDesignTimeDbContextFactory<WebjetMoviesDbContext>
     {
-        public MyDBContext CreateDbContext(string[] args)
+        public WebjetMoviesDbContext CreateDbContext(string[] args)
         {
-            return new MyDBContext();
+            return new WebjetMoviesDbContext();
         }
     }
 }

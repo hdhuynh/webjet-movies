@@ -18,7 +18,7 @@
     Settings.FileManagerType         = FileManagerType.Custom; // .NET Core project = Custom; .NET project = VisualStudio; No output (testing only) = Null
     Settings.ConnectionString        = "Data Source=(local);Initial Catalog=webjetmovies;User ID=sa;Password=password#23;MultipleActiveResultSets=true;TrustServerCertificate=True;"; // This is used by the generator to reverse engineer your database
     Settings.ConnectionStringName    = "DbConnectionString"; // ConnectionString key as specified in your app.config/web.config/appsettings.json. Not used by the generator, but is placed into the generated DbContext constructor.
-    Settings.DbContextName           = "MyDBContext"; // Class name for the DbContext to be generated. Note: If generating separate files, please give the db context a different name from this tt filename.
+    Settings.DbContextName           = "WebjetMoviesDbContext"; // Class name for the DbContext to be generated. Note: If generating separate files, please give the db context a different name from this tt filename.
     //Settings.DbContextInterfaceName= "IMyDbContext"; // Defaults to "I" + DbContextName or set string empty to not implement any interface.
     Settings.GenerateSeparateFiles   = true;
     Settings.Namespace               = DefaultNamespace; // Override the default namespace here. Please use double quotes, example: "Accounts.Billing"
