@@ -1,5 +1,0 @@
-project:
-  name: Northwind 365
-  tz: Australia/Brisbane
-  adrFolder: ./Docs/adr
-  packages: []
