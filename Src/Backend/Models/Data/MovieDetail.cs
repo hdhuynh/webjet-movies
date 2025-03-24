@@ -49,10 +49,10 @@ namespace Webjet.Backend.Models.Data
         [Display(Name = "Director")]
         public string Director { get; set; } // Director (length: 100)
 
-        [MaxLength(100)]
-        [StringLength(100)]
+        [MaxLength(200)]
+        [StringLength(200)]
         [Display(Name = "Writer")]
-        public string Writer { get; set; } // Writer (length: 100)
+        public string Writer { get; set; } // Writer (length: 200)
 
         [MaxLength(500)]
         [StringLength(500)]
@@ -89,6 +89,11 @@ namespace Webjet.Backend.Models.Data
         [StringLength(100)]
         [Display(Name = "Votes")]
         public string Votes { get; set; } // Votes (length: 100)
+
+        [MaxLength(100)]
+        [StringLength(100)]
+        [Display(Name = "Type")]
+        public string Type { get; set; } // Type (length: 100)
 
         [Required]
         [Display(Name = "Updated at")]

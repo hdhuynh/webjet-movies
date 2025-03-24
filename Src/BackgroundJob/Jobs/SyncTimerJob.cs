@@ -1,7 +1,6 @@
 ﻿using Serilog;
 using System.Globalization;
 using System.Linq;
-using System.Threading;
 using Webjet.Backend.Common.Configuration;
 using Webjet.Backend.Movies.GetMovieList;
 using Webjet.Backend.Repositories.Write;
@@ -70,7 +69,9 @@ public class SyncTimerJob(IMovieProviderApiService movieProviderApiService, IMov
         var price1 = Convert.ToDecimal(movieDetails1.Price);
         var price2 = Convert.ToDecimal(movieDetails2.Price);
         movieDto.Price = Math.Min(price1, price2).ToString(CultureInfo.InvariantCulture);
-        await repository.AddOrUpdateMovieSummary(movieDto);
+
+        //TODO: consider logic to merge movie details from 2 providers
+        await repository.AddOrUpdateMovieSummary(movieDto, movieDetails1);
     }
 
     private async Task<List<MovieDto>> MergeLatestMovieList()

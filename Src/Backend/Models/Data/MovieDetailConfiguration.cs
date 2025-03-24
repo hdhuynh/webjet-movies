@@ -23,7 +23,7 @@ namespace Webjet.Backend.Models.Data
             builder.Property(x => x.Runtime).HasColumnName(@"Runtime").HasColumnType("nvarchar(100)").IsRequired(false).HasMaxLength(100);
             builder.Property(x => x.Genre).HasColumnName(@"Genre").HasColumnType("nvarchar(100)").IsRequired(false).HasMaxLength(100);
             builder.Property(x => x.Director).HasColumnName(@"Director").HasColumnType("nvarchar(100)").IsRequired(false).HasMaxLength(100);
-            builder.Property(x => x.Writer).HasColumnName(@"Writer").HasColumnType("nvarchar(100)").IsRequired(false).HasMaxLength(100);
+            builder.Property(x => x.Writer).HasColumnName(@"Writer").HasColumnType("nvarchar(200)").IsRequired(false).HasMaxLength(200);
             builder.Property(x => x.Actors).HasColumnName(@"Actors").HasColumnType("nvarchar(500)").IsRequired(false).HasMaxLength(500);
             builder.Property(x => x.Plot).HasColumnName(@"Plot").HasColumnType("nvarchar(1000)").IsRequired(false).HasMaxLength(1000);
             builder.Property(x => x.Language).HasColumnName(@"Language").HasColumnType("nvarchar(100)").IsRequired(false).HasMaxLength(100);
@@ -32,6 +32,7 @@ namespace Webjet.Backend.Models.Data
             builder.Property(x => x.Metascore).HasColumnName(@"Metascore").HasColumnType("smallint").IsRequired(false);
             builder.Property(x => x.Rating).HasColumnName(@"Rating").HasColumnType("decimal(3,1)").IsRequired(false);
             builder.Property(x => x.Votes).HasColumnName(@"Votes").HasColumnType("nvarchar(100)").IsRequired(false).HasMaxLength(100);
+            builder.Property(x => x.Type).HasColumnName(@"Type").HasColumnType("nvarchar(100)").IsRequired(false).HasMaxLength(100);
             builder.Property(x => x.UpdatedAt).HasColumnName(@"UpdatedAt").HasColumnType("datetimeoffset").IsRequired();
 
             // Foreign keys

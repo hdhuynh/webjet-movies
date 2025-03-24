@@ -21,7 +21,7 @@ CREATE TABLE [dbo].[MovieDetails](
     [Runtime] [nvarchar](100) NULL,
 	[Genre] [nvarchar](100) NULL,
 	[Director] [nvarchar](100) NULL,
-	[Writer] [nvarchar](100) NULL,
+	[Writer] [nvarchar](200) NULL,
 	[Actors] [nvarchar](500) NULL,
 	[Plot] [nvarchar](1000) NULL,
 	[Language] [nvarchar](100) NULL,
@@ -30,6 +30,7 @@ CREATE TABLE [dbo].[MovieDetails](
 	[Metascore] [SMALLINT] NULL,
 	[Rating] DECIMAL(3, 1) NULL,
 	[Votes] [nvarchar](100) NULL,
+    [Type] [nvarchar](100) NULL,
 	[UpdatedAt] [datetimeoffset](7) NOT NULL,	
 	CONSTRAINT [PK_MovieDetails] PRIMARY KEY CLUSTERED ([MovieId]) ,
 	CONSTRAINT [FK_MovieDetails_MovieSummaries] FOREIGN KEY ([MovieId]) REFERENCES [dbo].[MovieSummaries] ([MovieId])
