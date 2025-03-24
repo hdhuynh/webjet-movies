@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using Webjet.Backend.Common.Configuration;
+using Webjet.Backend.Movies.GetMovieDetail;
 using Webjet.Backend.Movies.GetMovieList;
 
 namespace Webjet.Backend.Services;
@@ -58,7 +59,9 @@ public class MovieProviderApiService(
 
     private HttpClient BuildHcpClient(MovieProviderApiConfig movieProviderApiConfig)
     {
-        var client = httpClientFactory.CreateClient();
+        //var client = httpClientFactory.CreateClient();
+
+        var client = new HttpClient(new HttpClientHandler());
         client.Timeout = TimeSpan.FromSeconds(movieProviderApiConfig.TimeoutSeconds);
         client.BaseAddress = new Uri(movieProviderApiConfig.BaseUrl);
         client.DefaultRequestHeaders.Clear();

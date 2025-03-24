@@ -1,10 +1,10 @@
-﻿using Webjet.Backend.Common.Interfaces;
-
-namespace Webjet.Infrastructure.Services;
-
-public class MachineDateTime : IDateTime
-{
-    public DateTime Now => DateTime.Now;
-
-    public int CurrentYear => DateTime.Now.Year;
-}
+﻿// using Webjet.Backend.Common.Interfaces;
+//
+// namespace Webjet.Infrastructure.Services;
+//
+// public class MachineDateTime : IDateTime
+// {
+//     public DateTime Now => DateTime.Now;
+//
+//     public int CurrentYear => DateTime.Now.Year;
+// }

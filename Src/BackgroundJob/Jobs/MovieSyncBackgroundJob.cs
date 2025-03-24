@@ -11,20 +11,31 @@ namespace BackgroundJob.Jobs;
 public class MovieSyncBackgroundJob(IMovieProviderApiService movieProviderApiService, IMovieWriteRepository repository)
 {
     private readonly ILogger _log = Log.ForContext<MovieSyncBackgroundJob>();
+    private bool _syncInProgress = false;
 
     [FunctionName("SyncReminderJob")]
 	public async Task Run([TimerTrigger("%Jobs:SyncReminder:Trigger%")] TimerInfo timer)
 	{
 		_log.VerboseEvent("Sync", "Starting sync job");
-
-		try
+        if (_syncInProgress)
         {
+            _log.VerboseEvent("Sync", "Sync job already in progress, skipping");
+            return;
+        }
+
+        try
+        {
+            _syncInProgress = true;
             await SyncMovies();
         }
         catch (Exception e)
-		{
-			_log.ErrorEvent("Sync", e, "Error processing sync reminder job");
-		}
+        {
+            _log.ErrorEvent("Sync", e, "Error processing sync reminder job");
+        }
+        finally
+        {
+            _syncInProgress = false;
+        }
 
         _log.VerboseEvent("Sync", "Finished sync job");
 	}
@@ -32,20 +43,13 @@ public class MovieSyncBackgroundJob(IMovieProviderApiService movieProviderApiSer
     private async Task SyncMovies()
     {
         var movieDtoList = await MergeLatestMovieList();
-        // Parallel.ForEach(movieDtoList, async (movieDto) =>
-        // {
-        //     try
-        //     {
-        //         await AddOrUpdateSingleMovie(movieDto);
-        //     }
-        //     catch (Exception e)
-        //     {
-        //         _log.With("Movie", movieDto)
-        //             .ErrorEvent("Sync", e, $"Error processing movie {movieDto}");
-        //     }
-        // });
 
-        foreach (var movieDto in movieDtoList)
+        ParallelOptions parallelOptions = new()
+        {
+            MaxDegreeOfParallelism = 3
+        };
+
+        await Parallel.ForEachAsync(movieDtoList, parallelOptions, async (movieDto, token) =>
         {
             try
             {
@@ -56,7 +60,7 @@ public class MovieSyncBackgroundJob(IMovieProviderApiService movieProviderApiSer
                 _log.With("Movie", movieDto)
                     .ErrorEvent("Sync", e, $"Error processing movie {movieDto}");
             }
-        }
+        });
     }
 
     private async Task AddOrUpdateSingleMovie(MovieDto movieDto)
@@ -74,7 +78,7 @@ public class MovieSyncBackgroundJob(IMovieProviderApiService movieProviderApiSer
             movieDto.BestPriceProvider = MovieProvider.FilmWorld.ToString();
         }
 
-        //TODO: consider logic to merge movie details from 2 providers
+        //TODO: consider logic to merge movie details from 2 providers in case there are differences
         await repository.AddOrUpdateMovieSummary(movieDto, cineWorldMovieDetail);
     }
 

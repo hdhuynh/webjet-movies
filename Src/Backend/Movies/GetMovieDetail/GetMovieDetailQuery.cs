@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Webjet.Backend.Movies.GetMovieList;
 using Webjet.Backend.Repositories.Read;
 
 namespace Webjet.Backend.Movies.GetMovieDetail;

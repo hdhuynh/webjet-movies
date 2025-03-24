@@ -2,7 +2,6 @@
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Webjet.Backend.Common.Interfaces;
 using Webjet.Backend.Models.Data;
 
 namespace Webjet.Backend.Products.Queries.GetProductsList;

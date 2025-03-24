@@ -1,5 +1,5 @@
-﻿namespace Webjet.Infrastructure;
-
-public interface IInfrastructureMarker
-{
-}
+﻿// namespace Webjet.Infrastructure;
+//
+// public interface IInfrastructureMarker
+// {
+// }

@@ -3,8 +3,6 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Webjet.Backend.Common.Exceptions;
-using Webjet.Backend.Common.Interfaces;
 using Webjet.Backend.Models.Data;
 using Webjet.Domain.Products;
 

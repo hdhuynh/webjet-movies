@@ -1,9 +1,6 @@
-﻿using AutoMapper;
-using Webjet.Backend.Common.Mappings;
+﻿namespace Webjet.Backend.Movies.GetMovieDetail;
 
-namespace Webjet.Backend.Movies.GetMovieList;
-
-public class MovieDetailVm: IMapFrom<MovieDetailDto>
+public class MovieDetailVm
 {
     public required string Id { get; init; }
 

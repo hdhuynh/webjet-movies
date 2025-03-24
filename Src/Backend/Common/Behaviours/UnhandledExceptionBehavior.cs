@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-using MediatR;
+﻿using MediatR;
 
 using Microsoft.Extensions.Logging;
 
@@ -22,7 +18,7 @@ public class UnhandledExceptionBehavior<TRequest, TResponse>
         {
             var requestName = typeof(TRequest).Name;
 
-            logger.LogError(ex, "CleanArchitecture Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
+            logger.LogError(ex, "Unhandled Exception for Request {Name} {@Request}", requestName, request);
 
             throw;
         }

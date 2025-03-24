@@ -1,22 +1,20 @@
 <div class="jumbotron">
   <div class="container">
-    <h1 class="display-3">Webjet Movies</h1>
-    <p>
-      Movies at best prices!
-    </p>
+    <h1 class="display-5">Webjet Movies</h1>
+    <p class="lead">Get the best deals on movies!</p>
   </div>
 </div>
 
 <div class="container mt-4">
-  <h2 class="text-white text-center mb-4">Trending Movies</h2>
   <div class="movie-container position-relative">
     <button class="scroll-button scroll-left" (click)="scrollLeft()">&#10094;</button>
     <div class="movie-wrapper" id="movieScroll">
       <div class="movie-card" *ngFor="let movie of moviesListVm.movies" (click)="movieDetail(movie.id)">
         <img [src]="movie.poster" [alt]="movie.title" onerror="this.classList.add('error')" >
         <div class="movie-overlay">
-          <div>{{movie.title}}</div>
-          <div>{{movie.price | currency}}</div>
+          <div class="small">{{movie.title}}</div>
+          <div class="text-danger small"><strong>{{movie.price | currency}}</strong></div>
+          <div>({{movie.bestPriceProvider }})</div>
         </div>
       </div>
     </div>

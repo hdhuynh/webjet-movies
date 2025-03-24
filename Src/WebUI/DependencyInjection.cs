@@ -2,12 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Data.Common;
-using Webjet.Backend.Common.Interfaces;
+// using Webjet.Backend.Common.Interfaces;
 using Webjet.Backend.Models.Data;
 using Webjet.Backend.Repositories.Read;
-using Webjet.Infrastructure.Persistence;
-using Webjet.WebUI.Services;
-
 namespace Webjet.WebUI;
 
 public static class DependencyInjection
@@ -15,7 +12,7 @@ public static class DependencyInjection
     public static void AddWebUI(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddHttpContextAccessor();
-        services.AddScoped<ICurrentUserService, CurrentUserService>();
+        // services.AddScoped<ICurrentUserService, CurrentUserService>();
         services.AddScoped<Func<DbConnection>>(_ =>
         {
             var connectionString = configuration.GetConnectionString("MyDatabase");

@@ -11,12 +11,8 @@ using System.Security.Claims;
 using Webjet.Backend;
 using Webjet.Backend.Common.Behaviours;
 using Webjet.Backend.Common.Configuration;
-using Webjet.Backend.Common.Interfaces;
 using Webjet.Backend.Models.Data;
 using Webjet.Backend.Services;
-using Webjet.Infrastructure.Persistence;
-using Webjet.Infrastructure.Persistence.Interceptors;
-using Webjet.Infrastructure.Services;
 
 namespace BackgroundJob;
 
@@ -41,8 +37,8 @@ public class Program
                 //  services.AddScoped<WebjetDbContextInitializer>();
                 //  services.AddScoped<EntitySaveChangesInterceptor>();
                 //  services.AddScoped<DispatchDomainEventsInterceptor>();
-                 services.AddTransient<IDateTime, MachineDateTime>();
-                services.AddTransient<ICurrentUserService, BackgroundJobUser>();
+                 // services.AddTransient<IDateTime, MachineDateTime>();
+                // services.AddTransient<ICurrentUserService, BackgroundJobUser>();
 
                 var thisAssembly = typeof(IAmBackendAssembly).Assembly;
                 services.AddAutoMapper(thisAssembly);
@@ -50,8 +46,8 @@ public class Program
                 {
                     config.RegisterServicesFromAssembly(thisAssembly);
                     config.AddOpenBehavior(typeof(UnhandledExceptionBehavior<,>));
-                    config.AddOpenBehavior(typeof(ValidationBehavior<,>));
-                    config.AddOpenBehavior(typeof(PerformanceBehavior<,>));
+                    // config.AddOpenBehavior(typeof(ValidationBehavior<,>));
+                    // config.AddOpenBehavior(typeof(PerformanceBehavior<,>));
                 });
 
                 //
@@ -61,11 +57,11 @@ public class Program
                 // services.AddScoped<EntitySaveChangesInterceptor>();
                 // services.AddScoped<DispatchDomainEventsInterceptor>();
                 //services.AddScoped<ICurrentUserService, CurrentUserService>();
-
-
+                //services.AddTransient<IMovieProviderApiService, MovieProviderApiService>();
+                
                 //set up HttpClient with retry policy
                 services.AddHttpClient<IMovieProviderApiService, MovieProviderApiService>()
-                    .SetHandlerLifetime(TimeSpan.FromSeconds(1)) 
+                    .SetHandlerLifetime(TimeSpan.FromSeconds(10)) 
                     .AddPolicyHandler(GetRetryPolicy());
             })
 			.ConfigureWebJobs((context, config) =>
@@ -100,15 +96,6 @@ public class Program
         return HttpPolicyExtensions
             .HandleTransientHttpError()
             .OrResult(msg => !msg.IsSuccessStatusCode)
-            .WaitAndRetryAsync(6, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2,
-                retryAttempt)));
-    }
-}
-
-public class BackgroundJobUser() : ICurrentUserService
-{
-    public string? GetUserId()
-    {
-        return nameof(BackgroundJob);
+            .WaitAndRetryAsync(6, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
     }
 }

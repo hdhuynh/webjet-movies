@@ -4,23 +4,15 @@ using Webjet.Infrastructure.Identity;
 using Webjet.WebUI;
 using Webjet.WebUI.Extensions;
 using Webjet.WebUI.Features;
-using Webjet.WebUI.Filters;
+// using Webjet.WebUI.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddWebUI(builder.Configuration);
 builder.Services.AddApplication();
-builder.Services.AddInfrastructure(builder.Configuration);
-
-//Register IHttpClientFactory by calling AddHttpClient. TODO: remove as only background job uses it
 builder.Services.AddHttpClient();
 
 var app = builder.Build();
-
-app
-    .MapApiGroup("auth")
-    .MapIdentityApi<ApplicationUser>();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -38,7 +30,6 @@ else
     app.UseHsts();
 }
 
-app.UseExceptionFilter();
 app.UseHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
