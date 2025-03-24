@@ -10,18 +10,49 @@ namespace Webjet.Backend.Repositories.Read
         {
             const string sql = @"
                 SELECT
-                    MovieId as Id,
-                    Title,
-                    Poster,
-                    Price
+                    MovieId as Id
+                    ,Title
+                    ,Poster
+                    ,Price
+                    ,BestPriceProvider   
                 FROM
                     MovieSummaries";
             return await Connection.QueryAsync<MovieDto>(sql);
         }
-    }
 
-    public interface IMovieReadRepository
-    {
-        Task<IEnumerable<MovieDto>> GetMovieSummaries();
+        public async Task<MovieDetailVm> GetMovieDetails(string movieId)
+        {
+            const string sql = @"
+                         SELECT
+                           s.MovieId as Id
+                          ,Title
+                          ,Poster
+                          ,Price
+                          ,BestPriceProvider
+	                      ,Year
+                          ,Rated
+                          ,Released
+                          ,Runtime
+                          ,Genre
+                          ,Director
+                          ,Writer
+                          ,Actors
+                          ,Plot
+                          ,Language
+                          ,Country
+                          ,Awards
+                          ,Metascore
+                          ,Rating
+                          ,Votes
+                          ,Type
+                          ,d.UpdatedAt
+                     FROM
+                         MovieSummaries s
+                    INNER JOIN MovieDetails d ON d.MovieId = s.MovieId
+                    WHERE s.MovieId=@movieId";
+
+            return await Connection.QueryFirstOrDefaultAsync<MovieDetailVm>(sql, new { movieId });
+
+        }
     }
 }

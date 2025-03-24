@@ -32,7 +32,7 @@ public class Program
 			.UseServiceProviderFactory(new AutofacServiceProviderFactory())
 			.ConfigureServices(services =>
             {
-				services.AddScoped<SyncTimerJob>();
+				services.AddScoped<MovieSyncBackgroundJob>();
 
 
                 // var connectionString = PIConfiguration.Current.GetConnectionString("MyDatabase");

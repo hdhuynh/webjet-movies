@@ -2,6 +2,7 @@ import {Component, inject, OnInit} from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import {Client, MoviesListVm} from "../backend-api";
 import {BsModalService} from "ngx-bootstrap/modal";
+import {MovieDetailComponent} from "../movie-detail/movie-detail.component";
 
 declare var bootstrap: any;
 
@@ -27,6 +28,15 @@ export class HomeComponent implements OnInit
 
     this.client.getMoviesList().subscribe(result => {
       this.moviesListVm = result;
+    });
+  }
+
+  public movieDetail(movieId: string) {
+    this.client.getMovieDetail(movieId).subscribe(result => {
+      const initialState = {
+        movie: result
+      };
+      this.modalService.show(MovieDetailComponent, {initialState});
     });
   }
 

@@ -6,5 +6,5 @@ namespace Webjet.Backend.Repositories.Write;
 
 public interface IMovieWriteRepository
 {
-    Task AddOrUpdateMovieSummary(MovieDto movieDto, MovieDetailsDto movieDetailsDto);
+    Task AddOrUpdateMovieSummary(MovieDto movieDto, MovieDetailDto movieDetailDto);
 }

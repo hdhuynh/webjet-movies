@@ -7,12 +7,6 @@ using Webjet.Backend.Movies.GetMovieList;
 
 namespace Webjet.Backend.Services;
 
-public interface IMovieProviderApiService
-{
-    Task<MoviesListDto> GetAllMovies(MovieProvider movieProvider);
-    Task<MovieDetailsDto> GetMovieDetails(MovieProvider movieProvider, string movieId);
-}
-
 public class MovieProviderApiService(
     IConfiguration config,
     ILogger<MovieProviderApiService> logger,
@@ -36,14 +30,14 @@ public class MovieProviderApiService(
         throw new HttpRequestException("Failed to get movies list");
     }
 
-    public async Task<MovieDetailsDto> GetMovieDetails(MovieProvider movieProvider, string movieId)
+    public async Task<MovieDetailDto> GetMovieDetails(MovieProvider movieProvider, string movieId)
     {
         var movieProviderApiConfig = GetConfig(movieProvider);
         var apiResponse = await GetAsync(movieProviderApiConfig, movieProviderApiConfig.GetMovie, movieId);
         if (apiResponse.IsSuccessStatusCode)
         {
             var result = await apiResponse.Content.ReadAsStringAsync();
-            var movieDetails = JsonConvert.DeserializeObject<MovieDetailsDto>(result) ??
+            var movieDetails = JsonConvert.DeserializeObject<MovieDetailDto>(result) ??
                                throw new InvalidDataException("Invalid data from External API");
             return movieDetails;
         }

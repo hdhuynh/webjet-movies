@@ -20,6 +20,7 @@ namespace Webjet.Backend.Models.Data
             builder.Property(x => x.Title).HasColumnName(@"Title").HasColumnType("nvarchar(256)").IsRequired().HasMaxLength(256);
             builder.Property(x => x.Poster).HasColumnName(@"Poster").HasColumnType("nvarchar(2048)").IsRequired().HasMaxLength(2048);
             builder.Property(x => x.Price).HasColumnName(@"Price").HasColumnType("money").IsRequired(false);
+            builder.Property(x => x.BestPriceProvider).HasColumnName(@"BestPriceProvider").HasColumnType("nvarchar(100)").IsRequired(false).HasMaxLength(100);
             builder.Property(x => x.CreatedAt).HasColumnName(@"CreatedAt").HasColumnType("datetimeoffset").IsRequired();
             builder.Property(x => x.UpdatedAt).HasColumnName(@"UpdatedAt").HasColumnType("datetimeoffset").IsRequired();
         }

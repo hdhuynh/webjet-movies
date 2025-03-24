@@ -8,6 +8,7 @@ CREATE TABLE [dbo].[MovieSummaries](
 	[Title] [nvarchar](256) NOT NULL,
 	[Poster] [nvarchar](2048) NOT NULL,
     [Price] [money] NULL,
+    [BestPriceProvider] [nvarchar](100) NULL,
 	[CreatedAt] [datetimeoffset](7) NOT NULL,
 	[UpdatedAt] [datetimeoffset](7) NOT NULL,	
 	CONSTRAINT [PK_MovieSummaries] PRIMARY KEY CLUSTERED ([MovieId]) 

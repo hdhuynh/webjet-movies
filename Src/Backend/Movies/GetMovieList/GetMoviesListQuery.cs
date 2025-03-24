@@ -12,7 +12,7 @@ public class GetMoviesListQueryHandler(IMovieReadRepository readRepository) : IR
         var movieDtos = await readRepository.GetMovieSummaries();
         return new MoviesListVm
         {
-            Movies = movieDtos.ToList()
+            Movies = movieDtos
         };
     }
 }

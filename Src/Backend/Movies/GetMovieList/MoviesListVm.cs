@@ -4,5 +4,5 @@ namespace Webjet.Backend.Movies.GetMovieList;
 
 public class MoviesListVm
 {
-    public required List<MovieDto> Movies { get; init; }
+    public required IEnumerable<MovieDto> Movies { get; init; }
 }

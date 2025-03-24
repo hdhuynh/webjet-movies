@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Webjet.Backend.Movies.GetMovieDetail;
 using Webjet.Backend.Movies.GetMovieList;
 using Webjet.WebUI.Extensions;
 
@@ -18,10 +19,10 @@ public static class MovieEndpoints
             .WithName("GetMoviesList")
             .ProducesGet<MoviesListVm>();
 
-        // group
-        //     .MapGet("/{id}",
-        //         (int id, ISender sender, CancellationToken ct) => sender.Send(new GetMovieDetailQuery(id), ct))
-        //     .WithName("GetMovieDetail")
-        //     .ProducesGet<MovieDetailVm>();
+        group
+            .MapGet("/{movieId}",
+                (string movieId, ISender sender, CancellationToken ct) => sender.Send(new GetMovieDetailQuery(movieId), ct))
+            .WithName("GetMovieDetail")
+            .ProducesGet<MovieDetailVm>();
     }
 }

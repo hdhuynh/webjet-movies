@@ -414,6 +414,57 @@
           }
         }
       }
+    },
+    "/api/movies/{movieId}": {
+      "get": {
+        "tags": [
+          "movies"
+        ],
+        "operationId": "GetMovieDetail",
+        "parameters": [
+          {
+            "name": "movieId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieDetailVm"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovieDetailVm"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -673,6 +724,82 @@
             "type": "string"
           },
           "price": {
+            "type": "string"
+          },
+          "bestPriceProvider": {
+            "type": "string"
+          }
+        }
+      },
+      "MovieDetailVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "poster": {
+            "type": "string"
+          },
+          "price": {
+            "type": "string"
+          },
+          "bestPriceProvider": {
+            "type": "string"
+          },
+          "year": {
+            "type": "integer",
+            "nullable": true
+          },
+          "rated": {
+            "type": "string"
+          },
+          "released": {
+            "type": "string"
+          },
+          "runtime": {
+            "type": "string"
+          },
+          "genre": {
+            "type": "string"
+          },
+          "director": {
+            "type": "string"
+          },
+          "writer": {
+            "type": "string"
+          },
+          "actors": {
+            "type": "string"
+          },
+          "plot": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "awards": {
+            "type": "string"
+          },
+          "metascore": {
+            "type": "integer",
+            "nullable": true
+          },
+          "rating": {
+            "type": "number",
+            "format": "decimal",
+            "nullable": true
+          },
+          "votes": {
+            "type": "string"
+          },
+          "type": {
             "type": "string"
           }
         }

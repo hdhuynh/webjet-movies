@@ -36,6 +36,11 @@ namespace Webjet.Backend.Models.Data
         [Display(Name = "Price")]
         public decimal? Price { get; set; } // Price
 
+        [MaxLength(100)]
+        [StringLength(100)]
+        [Display(Name = "Best price provider")]
+        public string BestPriceProvider { get; set; } // BestPriceProvider (length: 100)
+
         [Required]
         [Display(Name = "Created at")]
         public DateTimeOffset CreatedAt { get; set; } // CreatedAt

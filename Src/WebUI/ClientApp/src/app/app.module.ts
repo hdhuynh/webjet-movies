@@ -21,6 +21,7 @@ import { environment } from "../environments/environment";
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MovieDetailComponent } from "./movie-detail/movie-detail.component";
 // import {ProductDetailComponent} from "./product-detail/product-detail.component";
 
 @NgModule({
@@ -29,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavTopMenuComponent,
     NavSideMenuComponent,
     HomeComponent,
+    MovieDetailComponent,
     // ProductsComponent,
     // ProductDetailComponent,
     // CustomersComponent,
