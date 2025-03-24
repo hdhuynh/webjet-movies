@@ -4,6 +4,7 @@ public class Constants
 {
     public class Logging
     {
-        public const string STARTUP = "startup";
+        public const string STARTUP = "Startup";
+        public const string API_SYNC = "Api Sync";
     }
 }

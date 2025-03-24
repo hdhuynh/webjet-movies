@@ -15,10 +15,10 @@ public class MovieSyncBackgroundJob(IMovieProviderApiService movieProviderApiSer
     [FunctionName("SyncReminderJob")]
 	public async Task Run([TimerTrigger("%Jobs:SyncReminder:Trigger%")] TimerInfo timer)
 	{
-		_log.VerboseEvent("Sync", "Starting sync job");
+		_log.VerboseEvent(Constants.Logging.API_SYNC, "Starting sync job");
         if (_syncInProgress)
         {
-            _log.VerboseEvent("Sync", "Sync job already in progress, skipping");
+            _log.VerboseEvent(Constants.Logging.API_SYNC, "Sync job already in progress, skipping");
             return;
         }
 
@@ -29,14 +29,14 @@ public class MovieSyncBackgroundJob(IMovieProviderApiService movieProviderApiSer
         }
         catch (Exception e)
         {
-            _log.ErrorEvent("Sync", e, "Error processing sync reminder job");
+            _log.ErrorEvent(Constants.Logging.API_SYNC, e, "Error processing sync job");
         }
         finally
         {
             _syncInProgress = false;
         }
 
-        _log.VerboseEvent("Sync", "Finished sync job");
+        _log.VerboseEvent(Constants.Logging.API_SYNC, "Finished sync job");
 	}
 
     private async Task SyncMovies()
@@ -57,7 +57,7 @@ public class MovieSyncBackgroundJob(IMovieProviderApiService movieProviderApiSer
             catch (Exception e)
             {
                 _log.With("Movie", movieDto)
-                    .ErrorEvent("Sync", e, $"Error processing movie {movieDto}");
+                    .ErrorEvent(Constants.Logging.API_SYNC, e, $"Error processing movie {movieDto}");
             }
         });
     }

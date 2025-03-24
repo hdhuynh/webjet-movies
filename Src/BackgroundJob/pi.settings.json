@@ -1,16 +1,1 @@
-{
-  "BusType": "InMemory",
-  "SeqServerUrl": "",
-  "InMemoryBus": {
-    "RequestTimeout": "10",
-    "RetryIntervalsInSeconds": "2|5|30"
-  },
-  "AzureServiceBus": {
-    "RequestTimeout": "10",
-    "ConnectionString": "",
-    "AzureTokenTimeToLive": "3600",
-    "MaxConcurrentConsumers": "",
-    "PrefetchCount": "",
-    "RetryIntervalsInSeconds": "2|5|30"
-  }
-}
+﻿{}

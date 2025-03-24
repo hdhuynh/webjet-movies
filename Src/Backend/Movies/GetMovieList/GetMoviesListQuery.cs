@@ -9,6 +9,8 @@ public class GetMoviesListQueryHandler(IMovieReadRepository readRepository) : IR
 {
     public async Task<MoviesListVm> Handle(GetMoviesListQuery request, CancellationToken cancellationToken)
     {
+        //TODO: If data is unlikely to change, we can cache the data here (can be done by using Redis).
+        //      When the data is changed by background job, we can invalidate the cache
         var movieDtos = await readRepository.GetMovieSummaries();
         return new MoviesListVm
         {
