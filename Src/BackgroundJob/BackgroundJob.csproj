@@ -26,13 +26,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Backend\Backend.csproj" />
+		<ProjectReference Include="..\Backend\Backend.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="PI.Common">
-	    <HintPath>..\Libs\PI.Common.dll</HintPath>
-	  </Reference>
+		<Reference Include="PI.Common">
+			<HintPath>..\Libs\PI.Common.dll</HintPath>
+		</Reference>
 	</ItemGroup>
 
 	<ItemGroup>

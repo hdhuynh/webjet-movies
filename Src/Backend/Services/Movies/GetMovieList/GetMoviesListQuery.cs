@@ -5,7 +5,8 @@ namespace Webjet.Backend.Services.Movies.GetMovieList;
 
 public record GetMoviesListQuery : IRequest<MoviesListVm>;
 
-public class GetMoviesListQueryHandler(IMovieReadRepository readRepository) : IRequestHandler<GetMoviesListQuery, MoviesListVm>
+public class GetMoviesListQueryHandler(IMovieReadRepository readRepository)
+    : IRequestHandler<GetMoviesListQuery, MoviesListVm>
 {
     public async Task<MoviesListVm> Handle(GetMoviesListQuery request, CancellationToken cancellationToken)
     {

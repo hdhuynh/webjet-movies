@@ -2,7 +2,7 @@
 
 namespace Webjet.Backend.Services.Movies.GetMovieDetail;
 
-public class MovieDetailDto: MovieDto
+public class MovieDetailDto : MovieDto
 {
     public required string Year { get; init; }
 

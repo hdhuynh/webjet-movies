@@ -1,71 +1,62 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <IsPublishable>false</IsPublishable>
-    <IsPackable>true</IsPackable>
-    <NuspecFile>Database.nuspec</NuspecFile>
-    <NuspecProperties>version=$(Version);configuration=$(Configuration)</NuspecProperties>
-    <NoWarn>NU5100,NU5110,NU5111,NU5119,CS1998</NoWarn>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<IsPublishable>false</IsPublishable>
+		<IsPackable>true</IsPackable>
+		<NuspecFile>Database.nuspec</NuspecFile>
+		<NuspecProperties>version=$(Version);configuration=$(Configuration)</NuspecProperties>
+		<NoWarn>NU5100,NU5110,NU5111,NU5119,CS1998</NoWarn>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Data\Integration\**" />
-    <EmbeddedResource Remove="Data\Integration\**" />
-    <None Remove="Data\Integration\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Data\Integration\**" />
+		<EmbeddedResource Remove="Data\Integration\**" />
+		<None Remove="Data\Integration\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Remove="appsettings.json" />
-    <None Remove="pi.settings.json" />
-    <None Remove="Scripts\001.Initial.sql" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="appsettings.json" />
+		<None Remove="pi.settings.json" />
+		<None Remove="Scripts\001.Initial.sql" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="pi.settings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="pi.settings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Scripts\001.Initial.sql" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Scripts\001.Initial.sql" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
-    <PackageReference Include="Bogus" Version="34.0.1" />
-    <PackageReference Include="dbup" Version="5.0.37" />
-    <PackageReference Include="Destructurama.Attributed" Version="3.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite" Version="6.0.16" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
-    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
-    <PackageReference Include="Serilog.Sinks.Seq" Version="6.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+						<PackageReference Include="dbup" Version="5.0.37" />
+				<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite" Version="6.0.16" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+									</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Backend\Backend.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="PI.Common">
-      <HintPath>..\Libs\PI.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="PI.Database">
-      <HintPath>..\Libs\PI.Database.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="PI.Common">
+			<HintPath>..\Libs\PI.Common.dll</HintPath>
+		</Reference>
+		<Reference Include="PI.Database">
+			<HintPath>..\Libs\PI.Database.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 
 </Project>

@@ -4,7 +4,8 @@ using Webjet.Backend.Services.Movies.GetMovieList;
 
 namespace Webjet.Backend.Repositories.Write
 {
-    public class MovieWriteRepository(Func<WebjetMoviesDbContext> context) : BaseWriteRepository(context), IMovieWriteRepository
+    public class MovieWriteRepository(Func<WebjetMoviesDbContext> context)
+        : BaseWriteRepository(context), IMovieWriteRepository
     {
         public async Task AddOrUpdateMovieSummary(MovieDto movieDto, MovieDetailDto movieDetailDto)
         {
@@ -49,15 +50,17 @@ namespace Webjet.Backend.Repositories.Write
                         Type = movieDetailDto.Type,
                         UpdatedAt = DateTimeOffset.Now,
                     };
-                   
+
                     if (decimal.TryParse(movieDetailDto.Rating, out var rating))
                     {
                         movieDetail.Rating = rating;
                     }
+
                     if (short.TryParse(movieDetailDto.Metascore, out var metaScore))
                     {
                         movieDetail.Metascore = metaScore;
                     }
+
                     movieDetails.Add(movieDetail);
                 }
 

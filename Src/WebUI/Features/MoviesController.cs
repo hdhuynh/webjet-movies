@@ -20,7 +20,8 @@ public static class MovieEndpoints
 
         group
             .MapGet("/{movieId}",
-                (string movieId, ISender sender, CancellationToken ct) => sender.Send(new GetMovieDetailQuery(movieId), ct))
+                (string movieId, ISender sender, CancellationToken ct) =>
+                    sender.Send(new GetMovieDetailQuery(movieId), ct))
             .WithName("GetMovieDetail")
             .ProducesGet<MovieDetailVm>();
     }

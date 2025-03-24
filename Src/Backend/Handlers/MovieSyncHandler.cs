@@ -6,7 +6,8 @@ using Webjet.Backend.Services.Movies.GetMovieList;
 
 namespace Webjet.Backend.Handlers
 {
-    public class MovieSyncHandler(IMovieProviderApiService movieProviderApiService, IMovieWriteRepository repository): IMovieSyncHandler
+    public class MovieSyncHandler(IMovieProviderApiService movieProviderApiService, IMovieWriteRepository repository)
+        : IMovieSyncHandler
     {
         private readonly ILogger _log = Log.ForContext<MovieSyncHandler>();
 
@@ -34,8 +35,10 @@ namespace Webjet.Backend.Handlers
 
         private async Task AddOrUpdateSingleMovie(MovieDto movieDto)
         {
-            var cineWorldMovieDetail = await movieProviderApiService.GetMovieDetails(MovieProvider.CinemaWorld, ToFullMovieId(movieDto.Id, MovieProvider.CinemaWorld));
-            var filmWorldMovieDetail = await movieProviderApiService.GetMovieDetails(MovieProvider.FilmWorld, ToFullMovieId(movieDto.Id, MovieProvider.FilmWorld));
+            var cineWorldMovieDetail = await movieProviderApiService.GetMovieDetails(MovieProvider.CinemaWorld,
+                ToFullMovieId(movieDto.Id, MovieProvider.CinemaWorld));
+            var filmWorldMovieDetail = await movieProviderApiService.GetMovieDetails(MovieProvider.FilmWorld,
+                ToFullMovieId(movieDto.Id, MovieProvider.FilmWorld));
             if (Convert.ToDecimal(cineWorldMovieDetail.Price) <= Convert.ToDecimal(filmWorldMovieDetail.Price))
             {
                 movieDto.Price = cineWorldMovieDetail.Price;
@@ -65,6 +68,7 @@ namespace Webjet.Backend.Handlers
                     movieDto.Id = TrimMovieId(movieDto.Id);
                     list1.Movies.Add(movieDto);
                 }
+
             return list1.Movies;
         }
 

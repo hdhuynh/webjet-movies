@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Net.Http.Headers;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System.Net.Http.Headers;
 using Webjet.Backend.Common.Configuration;
 using Webjet.Backend.Services.Movies.GetMovieDetail;
 using Webjet.Backend.Services.Movies.GetMovieList;

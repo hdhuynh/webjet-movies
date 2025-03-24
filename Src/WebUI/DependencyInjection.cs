@@ -1,9 +1,10 @@
-﻿using FluentValidation.AspNetCore;
+﻿using System.Data.Common;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
-using System.Data.Common;
 using Webjet.Backend.Models.Data;
 using Webjet.Backend.Repositories.Read;
+
 namespace Webjet.WebUI;
 
 public static class DependencyInjection

@@ -1,11 +1,12 @@
-﻿using Dapper;
-using System.Data.Common;
+﻿using System.Data.Common;
+using Dapper;
 using Webjet.Backend.Services.Movies.GetMovieDetail;
 using Webjet.Backend.Services.Movies.GetMovieList;
 
 namespace Webjet.Backend.Repositories.Read
 {
-    public class MovieReadRepository(Func<DbConnection> sqlConnectionFactory) : BaseReadRepository(sqlConnectionFactory), IMovieReadRepository
+    public class MovieReadRepository(Func<DbConnection> sqlConnectionFactory)
+        : BaseReadRepository(sqlConnectionFactory), IMovieReadRepository
     {
         public async Task<IEnumerable<MovieDto>> GetMovieSummaries()
         {
@@ -55,7 +56,6 @@ namespace Webjet.Backend.Repositories.Read
             WHERE s.MovieId=@movieId";
 
             return await Connection.QueryFirstOrDefaultAsync<MovieDetailVm>(sql, new { movieId });
-
         }
     }
 }

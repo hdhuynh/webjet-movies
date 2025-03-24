@@ -10,9 +10,9 @@ public class MovieSyncBackgroundJob(IMovieSyncHandler movieSyncHandler)
     private bool _syncInProgress = false;
 
     [FunctionName("SyncReminderJob")]
-	public async Task Run([TimerTrigger("%Jobs:SyncReminder:Trigger%")] TimerInfo timer)
-	{
-		_log.VerboseEvent(Constants.Logging.API_SYNC, "Starting sync job");
+    public async Task Run([TimerTrigger("%Jobs:SyncReminder:Trigger%")] TimerInfo timer)
+    {
+        _log.VerboseEvent(Constants.Logging.API_SYNC, "Starting sync job");
         if (_syncInProgress)
         {
             _log.VerboseEvent(Constants.Logging.API_SYNC, "Sync job already in progress, skipping");
@@ -34,5 +34,5 @@ public class MovieSyncBackgroundJob(IMovieSyncHandler movieSyncHandler)
         }
 
         _log.VerboseEvent(Constants.Logging.API_SYNC, "Finished sync job");
-	}
+    }
 }

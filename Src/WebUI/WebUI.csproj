@@ -1,124 +1,128 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>Webjet.WebUI</RootNamespace>
-    <AssemblyName>Webjet.WebUI</AssemblyName>
-    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
-    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
-    <IsPackable>false</IsPackable>
-    <SpaRoot>ClientApp\</SpaRoot>
-    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<RootNamespace>Webjet.WebUI</RootNamespace>
+		<AssemblyName>Webjet.WebUI</AssemblyName>
+		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+		<TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+		<IsPackable>false</IsPackable>
+		<SpaRoot>ClientApp\</SpaRoot>
+		<DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
 
-    <!-- Set this to true if you enable server-side prerendering -->
-    <BuildServerSideRenderer>false</BuildServerSideRenderer>
-    <UserSecretsId>f887bb79-4c4b-46b5-a783-c7ca8d16c955</UserSecretsId>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+		<!-- Set this to true if you enable server-side prerendering -->
+		<BuildServerSideRenderer>false</BuildServerSideRenderer>
+		<UserSecretsId>f887bb79-4c4b-46b5-a783-c7ca8d16c955</UserSecretsId>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 
-    <SpaProxyServerUrl>https://localhost:44427</SpaProxyServerUrl>
-    <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
-  </PropertyGroup>
+		<SpaProxyServerUrl>https://localhost:44427</SpaProxyServerUrl>
+		<SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="8.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="8.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-    <PackageReference Include="NSwag.AspNetCore" Version="14.0.0-preview012" />
-    <PackageReference Include="NSwag.MSBuild" Version="14.0.0-preview012">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+		<PackageReference Include="NSwag.AspNetCore" Version="14.0.0-preview012" />
+		<PackageReference Include="NSwag.MSBuild" Version="14.0.0-preview012">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <!-- Don't publish the SPA source files, but do show them in the project files list -->
-    <Content Remove="$(SpaRoot)**" />
-    <None Remove="$(SpaRoot)**" />
-    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-    <Content Remove="ClientApp\.angular\**" />
-    <None Remove="ClientApp\.angular\**" />
-    <Content Update="nswag.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<!-- Don't publish the SPA source files, but do show them in the project files list -->
+		<Content Remove="$(SpaRoot)**" />
+		<None Remove="$(SpaRoot)**" />
+		<None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+		<Content Remove="ClientApp\.angular\**" />
+		<None Remove="ClientApp\.angular\**" />
+		<Content Update="nswag.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="ClientApp\.angular\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="ClientApp\.angular\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Remove="ClientApp\.angular\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Remove="ClientApp\.angular\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="Features\CategoriesEndpoints.cs" />
-    <Compile Remove="Features\CustomerContactsEndpoints.cs" />
-    <Compile Remove="Features\CustomerEndpoints.cs" />
-    <Compile Remove="Features\ProductsController.cs" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Features\CategoriesEndpoints.cs" />
+		<Compile Remove="Features\CustomerContactsEndpoints.cs" />
+		<Compile Remove="Features\CustomerEndpoints.cs" />
+		<Compile Remove="Features\ProductsController.cs" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Error.cshtml" />
-    <_ContentIncludedByDefault Remove="Pages\Shared\_CookieConsentPartial.cshtml" />
-    <_ContentIncludedByDefault Remove="Pages\Shared\_Layout.cshtml" />
-    <_ContentIncludedByDefault Remove="Pages\Shared\_LoginPartial.cshtml" />
-    <_ContentIncludedByDefault Remove="Pages\Shared\_ValidationScriptsPartial.cshtml" />
-    <_ContentIncludedByDefault Remove="Pages\_ViewImports.cshtml" />
-    <_ContentIncludedByDefault Remove="Pages\_ViewStart.cshtml" />
-  </ItemGroup>
+	<ItemGroup>
+		<_ContentIncludedByDefault Remove="Pages\Error.cshtml" />
+		<_ContentIncludedByDefault Remove="Pages\Shared\_CookieConsentPartial.cshtml" />
+		<_ContentIncludedByDefault Remove="Pages\Shared\_Layout.cshtml" />
+		<_ContentIncludedByDefault Remove="Pages\Shared\_LoginPartial.cshtml" />
+		<_ContentIncludedByDefault Remove="Pages\Shared\_ValidationScriptsPartial.cshtml" />
+		<_ContentIncludedByDefault Remove="Pages\_ViewImports.cshtml" />
+		<_ContentIncludedByDefault Remove="Pages\_ViewStart.cshtml" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Backend\Backend.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Backend\Backend.csproj" />
+	</ItemGroup>
 
-  <Target Name="NSwag" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)' == 'Debug'">
-    <Exec ConsoleToMSBuild="true" ContinueOnError="true" WorkingDirectory="$(ProjectDir)" EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" Command="$(NSwagExe_Net80) run nswag.json /variables:Configuration=$(Configuration)">
-      <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
-      <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />
-    </Exec>
+	<Target Name="NSwag" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)' == 'Debug'">
+		<Exec ConsoleToMSBuild="true" ContinueOnError="true" WorkingDirectory="$(ProjectDir)"
+		      EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development"
+		      Command="$(NSwagExe_Net80) run nswag.json /variables:Configuration=$(Configuration)">
+			<Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
+			<Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />
+		</Exec>
 
-    <Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />
-    <Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />
-  </Target>
+		<Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />
+		<Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />
+	</Target>
 
-  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
-    <!-- Ensure Node.js is installed -->
-    <Exec Command="node --version" ContinueOnError="true">
-      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
-    </Exec>
-    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
-    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
-  </Target>
+	<Target Name="DebugEnsureNodeEnv" BeforeTargets="Build"
+	        Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+		<!-- Ensure Node.js is installed -->
+		<Exec Command="node --version" ContinueOnError="true">
+			<Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+		</Exec>
+		<Error Condition="'$(ErrorCode)' != '0'"
+		       Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+		<Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+	</Target>
 
-  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
-    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
+	<Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+		<!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
 
-    <!-- Include the newly-built files in the publish output -->
-    <ItemGroup>
-      <DistFiles Include="$(SpaRoot)build\**" />
-      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+		<!-- Include the newly-built files in the publish output -->
+		<ItemGroup>
+			<DistFiles Include="$(SpaRoot)build\**" />
+			<ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
 
-        <RelativePath>wwwroot\%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
-        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      </ResolvedFileToPublish>
-    </ItemGroup>
-  </Target>
+				<RelativePath>wwwroot\%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
+				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+				<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			</ResolvedFileToPublish>
+		</ItemGroup>
+	</Target>
 
 </Project>

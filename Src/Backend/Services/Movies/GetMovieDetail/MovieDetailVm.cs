@@ -43,5 +43,4 @@ public class MovieDetailVm
     public string Votes { get; init; }
 
     public string Type { get; init; }
-   
 }
