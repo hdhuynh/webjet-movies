@@ -26,11 +26,11 @@ public class Program
 				services.AddScoped<MovieSyncBackgroundJob>();
                 var thisAssembly = typeof(IAmBackendAssembly).Assembly;
                 services.AddAutoMapper(thisAssembly);
-                services.AddMediatR(config =>
-                {
-                    config.RegisterServicesFromAssembly(thisAssembly);
-                    config.AddOpenBehavior(typeof(UnhandledExceptionBehavior<,>));
-                });
+                // services.AddMediatR(config =>
+                // {
+                //     config.RegisterServicesFromAssembly(thisAssembly);
+                //     config.AddOpenBehavior(typeof(UnhandledExceptionBehavior<,>));
+                // });
                 
                 //set up HttpClient with retry policy
                 services.AddHttpClient<IMovieProviderApiService, MovieProviderApiService>()
