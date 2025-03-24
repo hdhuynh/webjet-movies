@@ -31,7 +31,7 @@
 
 	<ItemGroup>
 	  <Reference Include="PI.Common">
-	    <HintPath>..\..\Libs\PI.Common.dll</HintPath>
+	    <HintPath>..\Libs\PI.Common.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 
