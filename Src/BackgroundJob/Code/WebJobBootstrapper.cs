@@ -13,6 +13,5 @@ public class WebJobBootstrapper
 	public static void RegisterModules(ContainerBuilder builder)
 	{
 		builder.RegisterModule<WebJobBusModule>();
-		builder.RegisterModule<JobModule>();
 	}
 }
