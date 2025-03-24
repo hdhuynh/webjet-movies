@@ -59,8 +59,6 @@ public class MovieProviderApiService(
 
     private HttpClient BuildHcpClient(MovieProviderApiConfig movieProviderApiConfig)
     {
-        //var client = httpClientFactory.CreateClient();
-
         var client = new HttpClient(new HttpClientHandler());
         client.Timeout = TimeSpan.FromSeconds(movieProviderApiConfig.TimeoutSeconds);
         client.BaseAddress = new Uri(movieProviderApiConfig.BaseUrl);

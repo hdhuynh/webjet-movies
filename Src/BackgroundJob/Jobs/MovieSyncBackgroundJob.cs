@@ -1,5 +1,4 @@
 ﻿using Serilog;
-using System.Globalization;
 using System.Linq;
 using Webjet.Backend.Common.Configuration;
 using Webjet.Backend.Movies.GetMovieList;

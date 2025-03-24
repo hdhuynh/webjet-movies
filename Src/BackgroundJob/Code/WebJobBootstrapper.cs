@@ -10,15 +10,9 @@ public class WebJobBootstrapper
 			.Build(environment);
 	}
 
-	public static void SetToUtcTime()
-	{
-		//DapperExtensions.DateTimeKindToUtc();
-	}
-
 	public static void RegisterModules(ContainerBuilder builder)
 	{
 		builder.RegisterModule<WebJobBusModule>();
-		//builder.RegisterModule<DatabaseModule>();
 		builder.RegisterModule<JobModule>();
 	}
 }

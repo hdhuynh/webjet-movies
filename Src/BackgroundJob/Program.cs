@@ -1,17 +1,12 @@
-﻿using Autofac.Core;
-using BackgroundJob.Jobs;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+﻿using BackgroundJob.Jobs;
 using Microsoft.Extensions.DependencyInjection;
 using Polly;
 using Polly.Extensions.Http;
 using Serilog;
 using System.Net.Http;
-using System.Security.Claims;
 using Webjet.Backend;
 using Webjet.Backend.Common.Behaviours;
 using Webjet.Backend.Common.Configuration;
-using Webjet.Backend.Models.Data;
 using Webjet.Backend.Services;
 
 namespace BackgroundJob;
@@ -29,35 +24,13 @@ public class Program
 			.ConfigureServices(services =>
             {
 				services.AddScoped<MovieSyncBackgroundJob>();
-
-
-                // var connectionString = PIConfiguration.Current.GetConnectionString("MyDatabase");
-                // services.AddDbContext<WebjetMoviesDbContext>(options => options.UseSqlServer(connectionString));
-                // services.AddScoped<IWebjetMoviesDbContext>(provider => provider.GetRequiredService<WebjetMoviesDbContext>());
-                //  services.AddScoped<WebjetDbContextInitializer>();
-                //  services.AddScoped<EntitySaveChangesInterceptor>();
-                //  services.AddScoped<DispatchDomainEventsInterceptor>();
-                 // services.AddTransient<IDateTime, MachineDateTime>();
-                // services.AddTransient<ICurrentUserService, BackgroundJobUser>();
-
                 var thisAssembly = typeof(IAmBackendAssembly).Assembly;
                 services.AddAutoMapper(thisAssembly);
                 services.AddMediatR(config =>
                 {
                     config.RegisterServicesFromAssembly(thisAssembly);
                     config.AddOpenBehavior(typeof(UnhandledExceptionBehavior<,>));
-                    // config.AddOpenBehavior(typeof(ValidationBehavior<,>));
-                    // config.AddOpenBehavior(typeof(PerformanceBehavior<,>));
                 });
-
-                //
-                // services.AddScoped<IWebjetDbContext>(provider => provider.GetRequiredService<WebjetDbContext>());
-                // services.AddScoped<WebjetDbContextInitializer>();
-                //
-                // services.AddScoped<EntitySaveChangesInterceptor>();
-                // services.AddScoped<DispatchDomainEventsInterceptor>();
-                //services.AddScoped<ICurrentUserService, CurrentUserService>();
-                //services.AddTransient<IMovieProviderApiService, MovieProviderApiService>();
                 
                 //set up HttpClient with retry policy
                 services.AddHttpClient<IMovieProviderApiService, MovieProviderApiService>()
@@ -67,8 +40,6 @@ public class Program
 			.ConfigureWebJobs((context, config) =>
 			{
 				WebJobBootstrapper.InitializeConfiguration(context.HostingEnvironment, context.Configuration);
-				//ConfigurationHelper.SetupLogger();
-				WebJobBootstrapper.SetToUtcTime();
 				config.AddTimers();
 
 				config

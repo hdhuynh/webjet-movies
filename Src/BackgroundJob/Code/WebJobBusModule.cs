@@ -17,11 +17,10 @@ public class WebJobBusModule : Module
             .InstancePerDependency()
             .PropertiesAutowired();
 
-        var connectionString = PIConfiguration.Current.GetConnectionString("MyDatabase");
         builder.Register(_ =>
             {
                 var dbContextOptions = new DbContextOptionsBuilder<WebjetMoviesDbContext>()
-                    .UseSqlServer(connectionString);
+                    .UseSqlServer(PIConfiguration.Current.GetConnectionString("MyDatabase"));
                 return new WebjetMoviesDbContext(dbContextOptions.Options);
             })
             .As<WebjetMoviesDbContext>()

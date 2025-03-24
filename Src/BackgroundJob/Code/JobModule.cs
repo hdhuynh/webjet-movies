@@ -16,13 +16,6 @@ public class JobModule : Module
             typeof(IAmBackendAssembly).Assembly,
         };
 
-        // builder.Register<IConfigurationProvider>(ctx => new MapperConfiguration(
-        //     delegate (IMapperConfigurationExpression cfg)
-        //     {
-        //         cfg.AddMaps(assembliesToScan);
-        //         HeroicAutoMapperConfigurator.LoadMapsFromAssemblyContainingTypeAndReferencedAssemblies<WebJobBootstrapper>(cfg);
-        //     })).SingleInstance();
-
         builder.Register<IMapper>(ctx => new Mapper(ctx.Resolve<IConfigurationProvider>(), ctx.Resolve))
             .InstancePerLifetimeScope();
     }
