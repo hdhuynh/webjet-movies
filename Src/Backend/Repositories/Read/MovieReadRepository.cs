@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using System.Data.Common;
-using Webjet.Backend.Movies.GetMovieDetail;
-using Webjet.Backend.Movies.GetMovieList;
+using Webjet.Backend.Services.Movies.GetMovieDetail;
+using Webjet.Backend.Services.Movies.GetMovieList;
 
 namespace Webjet.Backend.Repositories.Read
 {
@@ -17,7 +17,9 @@ namespace Webjet.Backend.Repositories.Read
                     ,Price
                     ,BestPriceProvider   
                 FROM
-                    MovieSummaries";
+                    MovieSummaries
+                ORDER BY 
+                    Title";
             return await Connection.QueryAsync<MovieDto>(sql);
         }
 

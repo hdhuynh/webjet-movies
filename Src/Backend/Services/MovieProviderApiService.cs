@@ -3,8 +3,8 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using Webjet.Backend.Common.Configuration;
-using Webjet.Backend.Movies.GetMovieDetail;
-using Webjet.Backend.Movies.GetMovieList;
+using Webjet.Backend.Services.Movies.GetMovieDetail;
+using Webjet.Backend.Services.Movies.GetMovieList;
 
 namespace Webjet.Backend.Services;
 

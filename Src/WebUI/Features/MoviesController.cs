@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using Webjet.Backend.Movies.GetMovieDetail;
-using Webjet.Backend.Movies.GetMovieList;
+using Webjet.Backend.Services.Movies.GetMovieDetail;
+using Webjet.Backend.Services.Movies.GetMovieList;
 using Webjet.WebUI.Extensions;
 
 namespace Webjet.WebUI.Features;

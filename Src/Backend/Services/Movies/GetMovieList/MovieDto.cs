@@ -1,4 +1,4 @@
-﻿namespace Webjet.Backend.Movies.GetMovieList;
+﻿namespace Webjet.Backend.Services.Movies.GetMovieList;
 
 public class MovieDto
 {

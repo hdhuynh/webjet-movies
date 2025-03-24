@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Webjet.Backend.Repositories.Read;
 
-namespace Webjet.Backend.Movies.GetMovieList;
+namespace Webjet.Backend.Services.Movies.GetMovieList;
 
 public record GetMoviesListQuery : IRequest<MoviesListVm>;
 

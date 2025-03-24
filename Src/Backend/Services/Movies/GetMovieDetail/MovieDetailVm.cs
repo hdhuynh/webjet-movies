@@ -1,4 +1,4 @@
-﻿namespace Webjet.Backend.Movies.GetMovieDetail;
+﻿namespace Webjet.Backend.Services.Movies.GetMovieDetail;
 
 public class MovieDetailVm
 {

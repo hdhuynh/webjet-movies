@@ -1,6 +1,6 @@
-﻿using Webjet.Backend.Movies.GetMovieList;
+﻿using Webjet.Backend.Services.Movies.GetMovieList;
 
-namespace Webjet.Backend.Movies.GetMovieDetail;
+namespace Webjet.Backend.Services.Movies.GetMovieDetail;
 
 public class MovieDetailDto: MovieDto
 {

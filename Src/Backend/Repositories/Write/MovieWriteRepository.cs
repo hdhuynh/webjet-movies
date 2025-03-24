@@ -1,6 +1,6 @@
 ﻿using Webjet.Backend.Models.Data;
-using Webjet.Backend.Movies.GetMovieDetail;
-using Webjet.Backend.Movies.GetMovieList;
+using Webjet.Backend.Services.Movies.GetMovieDetail;
+using Webjet.Backend.Services.Movies.GetMovieList;
 
 namespace Webjet.Backend.Repositories.Write
 {
