@@ -18,7 +18,6 @@ public abstract class BaseWriteRepository(Func<WebjetMoviesDbContext> context)
 		}
 		catch (DbUpdateException e)
 		{
-
 			ThrowIfUniquenessError(e);
 			throw;
 		}

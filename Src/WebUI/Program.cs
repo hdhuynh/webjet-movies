@@ -14,7 +14,6 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-    app.UseRegisteredServicesPage(app.Services);
     using var scope = app.Services.CreateScope();
 }
 else

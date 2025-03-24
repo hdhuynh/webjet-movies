@@ -25,6 +25,13 @@ webjet-movies\Src> .\.scripts\db-dev.ps1
 ```
 
 6. Start and initialize Azure Storage Emulator (to run WebJob project locally in development) (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-emulator#:~:text=in%20this%20article.-,Start%20and%20initialize%20the%20Storage%20Emulator,-To%20start%20the)
+   Open command prompt, go to the Storage Emulator installation path (e.g. C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator), and run:
 
-7. In Visual Studio, set BackgroundJob as startup project. To run both WebUI and BackgroundJob, set multiple startup projects. BackgroundJob will be run as console window
+```powershell
+AzureStorageEmulator.exe init
+AzureStorageEmulator.exe start
+```
+
+7. In Visual Studio, set BackgroundJob as startup project. To run both WebUI and BackgroundJob, set multiple startup projects. 
+   BackgroundJob will be run as console window
 

@@ -3,13 +3,13 @@ using Webjet.Backend.Repositories.Read;
 
 namespace Webjet.Backend.Movies.GetMovieDetail;
 
-public record GetMovieDetailQuery(string movieId) : IRequest<MovieDetailVm>;
+public record GetMovieDetailQuery(string MovieId) : IRequest<MovieDetailVm>;
 
 public class GetMovieDetailQueryHandler(IMovieReadRepository readRepository) : IRequestHandler<GetMovieDetailQuery, MovieDetailVm>
 {
     public async Task<MovieDetailVm> Handle(GetMovieDetailQuery request, CancellationToken cancellationToken)
     {
-        var movieDetailVm = await readRepository.GetMovieDetails(request.movieId);
+        var movieDetailVm = await readRepository.GetMovieDetails(request.MovieId);
         return movieDetailVm;
     }
 }

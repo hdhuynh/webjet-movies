@@ -10,8 +10,7 @@ namespace Webjet.Backend.Services;
 
 public class MovieProviderApiService(
     IConfiguration config,
-    ILogger<MovieProviderApiService> logger,
-    IHttpClientFactory httpClientFactory) : IMovieProviderApiService
+    ILogger<MovieProviderApiService> logger) : IMovieProviderApiService
 {
     private const string XAccessTokenHeader = "x-access-token";
     private const string ApplicationJsonHeaderType = "application/json";

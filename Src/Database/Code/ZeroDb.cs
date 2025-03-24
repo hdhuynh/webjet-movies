@@ -2,8 +2,8 @@
 
 public static class ZeroDb
 {
-	public static string Script =>
-		@"
+    public static string Script =>
+        @"
 				--
 				DECLARE @SQL nvarchar(max) = '';
 
